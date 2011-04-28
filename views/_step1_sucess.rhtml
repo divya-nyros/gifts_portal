@@ -1,0 +1,143 @@
+<script type="text/javascript">
+
+
+
+	 jQuery(document).ready(function() {
+            jQuery('#main_div_gif1').slideUp(); 
+			jQuery('#main_div_gif3').slideUp(); 
+			jQuery('#main_div_gif2').slideDown();
+			document.getElementById('gift1_open1').src='/images/shopping/inshope_button_down.gif';
+			document.getElementById('gift1_open3').src='/images/shopping/inshope_button_down.gif';
+		    document.getElementById('gift1_open2').src='/images/shopping/inshope_button.gif';
+		
+			
+			jQuery('#back_form').live("click",back_div1);
+			
+		
+		  document.getElementById('test1').innerHTML='<h2 onclick="image_disp(1);" id="gift1_fr"><a href="#" id="main_gift1">1.Gift From</a><img src="/images/shopping/inshope_button_down.gif" id="gift1_open1"></h2>';
+		  document.getElementById('test2').innerHTML='<h2 onclick="image_disp(2);" id="gift2_fr"><a href="#" id="main_gift2">2.Gift To</a><img src="/images/shopping/inshope_button.gif" id="gift1_open2"></h2>';
+
+	});
+
+</script>
+<!--<div id="myaddress1">
+<%#= render :partial => "gift_to" %>
+</div>	-->
+	<div id="myaddress1"> 
+			 <!--block2 start-->
+			<div class="shop_cart_bg" id="2">
+		<div id='test2'>
+			<h2 id="gift2_fr">
+				<a href="#" id="main_gift2">2. Gift To</a>
+				<img src="/images/shopping/inshope_button_down.gif" id="gift1_open2">		
+			</h2>
+		</div>
+			
+			<div id="main_div_gif2" style="display:none;">
+			
+			
+				<!--form block1 start-->
+			
+				
+				<div id="mktipmsg" ></div>
+				 <%# form_for :sucess,:url =>{ :controller => 'shopping',:action => 'show_success',:id =>@user.id } do %>
+			
+			  
+					<div style="padding-bottom:30px; float:left;"><%= render :partial => "gift_to" %></div>
+					
+						
+				
+				<div style="width:300px; float:left; margin:5px 0px 0px 0px;">
+				
+				<div class="cart_headding">Step 2: Gift To</div>
+				
+				<div class="shop_textsamp">
+				
+				
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">To Name</div>
+				<div class="step1_dec">Name of the person whom you wish to send gifts.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Delivery Address</div>
+				<div class="step1_dec">Provide a Valid Detailed delivery address. Click here to see the <a href='http://www.inkakinada.com/areas' target='_blank'>list of areas</a> where we can deliver your gifts in Kakinada.</div>
+				
+				</div>
+				<div class="step1_clear">&nbsp;</div>
+				
+						<div class="step1_content">
+				
+				<div class="step1_name">Zip Code</div>
+				<div class="step1_dec">Select the zip code the recipient address belongs to.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Phone</div>
+				<div class="step1_dec">The recipient's/relative phone number is used to get a confirmation of your order delivery on phone. Format: +919000900008.</div>
+				
+				</div>
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Delivery Date</div>
+				<div class="step1_dec"> The date of the day on which you like your dear one to receive your gifts box.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Comments</div>
+				<div class="step1_dec">Any special/personal message you would like to attach with the Gift(s) or any instructions you would like to convey InKakinada.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				
+				<div class="step1_dec" style="width:250px;">Click on <span style="color:#880a05;"><strong>"&nbsp;Next&nbsp;"</strong></span> button and wait for <span style="color:#880a05;"><strong>Step 3</strong></span> to appear</div>
+				
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+					
+				</div>
+				
+				
+				</div>
+				
+		
+				</div>
+				<!--form block1 end-->
+				
+			
+			
+			
+			
+			</div>
+			
+			</div>	

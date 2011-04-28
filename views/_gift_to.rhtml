@@ -1,0 +1,267 @@
+<style type="text/css">
+#mktipmsg {padding: 5px; background-color: #FFF8DC; border: 1px solid #ffff00; width:250px; height:180px;font-family: Arial,Helvetica, sans-serif; font-size: 12px; color: #6b6b6b; display:none; z-index:1000; position:absolute;left:-50px;top:450px; text-align:left; }
+</style>
+	<script language="javascript" type="text/javascript">
+	
+
+	
+function back_div1()
+{
+ 	jQuery("#lightEx2").hide(400);
+	    jQuery("#lightEx2").attr('display', 'none');
+               jQuery('#main_div_gif1').slideDown();  
+				jQuery('#main_div_gif2').slideUp();
+				jQuery('#main_div_gif3').slideUp();  
+				 document.getElementById('gift1_open2').src='/images/shopping/inshope_button_down.gif';
+				 document.getElementById('gift1_open3').src='/images/shopping/inshope_button_down.gif';
+		  document.getElementById('gift1_open1').src='/images/shopping/inshope_button.gif';
+		   
+	document.getElementById('select_delevery').value = 'dsdfdsfdsfd';
+	  
+
+
+}
+window.onload = updateval();
+function updateval()
+{
+
+document.getElementById('user_phone_no').value = get_cookie('cookie_to_phone');
+document.getElementById('order_to_name').value = get_cookie('cookie_to_name');
+document.getElementById('street_address1').value = get_cookie('cookie_to_street_address1');
+document.getElementById('to_zip').value = get_cookie('cookie_to_zip');
+document.getElementById('profile_dob').value = get_cookie('cookie_profile_dob');
+document.getElementById('order_note').value = get_cookie('cookie_order_note');
+
+}
+function showtip(e,message)
+{
+ var x=0;
+ var y=0;
+ var m;
+ var h;
+ if(!e)
+   var e=window.event;
+   if(e.pageX||e.pageY)
+    {
+     x=e.pageX;
+     y=e.pageY;
+     }
+ else 
+  if(e.clientX||e.clientY)
+   {
+    x=e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft;
+    y=e.clientY+document.body.scrollTop+document.documentElement.scrollTop;
+   }
+   
+   m=document.getElementById('mktipmsg');
+  // alert(y);
+  messageHeigth=-10;
+   if((y>10)&&(y<510))
+    {
+     m.style.top=y-messageHeigth+"px";
+     //alert(m.style.top);
+    }
+   if(x < 850) {
+     m.style.left=x+20+"px";
+     }
+   else{
+    m.style.left=x-170+"px";
+    }
+    m.innerHTML=message;
+    m.style.display="block";
+    m.style.zIndex=203;
+    }
+
+function hidetip()
+{
+  var m;
+  m=document.getElementById('mktipmsg');
+  m.style.display="none";
+}
+</script>
+
+	 
+
+
+	<%= javascript_include_tag "prototype" %>
+	
+	<%= calendar_date_select_includes %>
+	   <% if !@user.blank?  %>
+	    <%# form_for :orders, :url =>{ :controller => 'shopping',:action => 'show_success',:id =>@user.id } do %>
+	 <% form_remote_tag(:update => "myaddress",:loading => "",:complete => "",:url =>{ :controller => 'gifts',:action => 'show_success',:id =>@user.id },:method => :post) do %>
+				
+				<div style="float:left; width:580px; background:url(/images/shopping/dot_shoping.jpg) repeat-y right; margin-top:20px;">
+				
+				
+				<% if @user.role_id.to_i == 3 %>
+				<div class="new_cart_main">
+						<div class="name_cart">Choose Recipient</div>
+						<div  id="update_address" class="name_cart_input"><%# @phoneaddress.title= @add_first.title%>
+		<% if @addresses %>				
+						
+			<%= collection_select("phoneaddress", "title", @addresses, :title, :title,{:prompt => 'New Recipient'},{:id => "select_delevery_exist", "onchange" => remote_function(:update => "related_address", :loading => "Toggle.display('spinner_ten')", :complete => "Toggle.display('spinner_ten')", :with => "'id='+value",:style =>'width:30px;', :url => {:controller => 'gifts',  :action => "show_address"})}) %> <%= image_tag "/images/spinner.gif", :id => 'spinner_ten', :class => 'display',:style =>'display:none;' %>
+			
+	<% else %>
+	
+	<select name="phoneaddress[title]">
+	<option value="">New Recipient</option>
+	</select>
+	 <% end %>
+	
+
+
+						</div>
+					</div>
+	
+		<% end %>
+					<div id="related_address">
+					
+					
+					
+					
+					  <%#= render :partial => "update_address" %>
+								
+				      <div class="new_cart_main">
+				 		<div class="name_cart">To Name</div>
+						<div class="name_cart_input"><input type="text" id="order_to_name" name="orders[to_name_user]"   >
+						</div>
+					</div>
+					<div class="new_cart_mainarea">
+						<div class="name_cart">Delivery Address</div>
+						<div class="name_cart_input"><textarea style="color:#999999;" id="street_address1" name="phoneaddress[address]" onKeyUp="if(event.keyCode==13) showOptions();this.style.color='#000000'; " onFocus="if(this.value=='Kakinada Address Only') this.value='';" onBlur="if(this.value=='') this.value='Kakinada Address Only';if(this.value=='Kakinada Address Only')this.style.color='#999999';" >Kakinada Address Only</textarea>
+						</div>
+						
+					</div>
+					
+
+				<div class="new_cart_main">
+						<div class="name_cart">City</div>
+						<div class="name_cart">
+						Kakinada
+						<input type="hidden" id="to_city" name="phoneaddress[city]" value="Kakinada" >
+						</div>
+					</div>	
+					
+					
+					
+					<div class="new_cart_main" style="d">
+						<div class="name_cart">State</div>
+						<div class="name_cart">
+						Andhra Pradesh
+						<input type="hidden" id="to_state" name="phoneaddress[state]" value="Andhra Pradesh">
+						</div>
+					</div>
+		
+		<div class="new_cart_main" style="padding-bottom:20px;">
+						<div class="name_cart">Zipcode</div>
+						<div class="name_cart_input">
+						<!--<input type="text" id="to_zipcode" name="phoneaddress[zipcode]">-->
+						<select name="phoneaddress[zipcode]" id="to_zip">
+	                        <option value="533001">533001</option>
+							<option value="533002">533002</option>
+							<option value="533003">533003</option>
+							<option value="533004">533004</option>
+							<option value="533005">533005</option>
+							<option value="533006">533006</option>
+							<option value="533016">533016</option>
+							
+	                    </select> 
+						 
+						<p>(<a  href="javascript://" onclick="kakinada_code();">List of Kakinada Zipcodes</a>)</p>
+						
+						</div>
+					</div>
+		
+		
+		<div class="new_cart_main">
+						<div class="name_cart">Country</div>
+						<div class="name_cart">
+						
+						India
+						<%= hidden_field "to_country","country",:value => "India" %>
+					
+					   <%#= country_select(:to_country, :country, @add_first.country,{},{:style => 'width:350px;'}) %>	
+						
+					
+					
+						</div>
+					</div>
+
+
+					<div class="new_cart_main">
+						<div class="name_cart">Phone Number</div>
+						<div class="name_cart_input"><input type="text" id="user_phone_no" name="phoneaddress[phone]"><p>(Enter Country Code)</p>
+						</div>
+					</div>	
+						
+						<div class="new_cart_main" style="padding-top:10px;">
+						<div class="name_cart">Delivery Date</div>
+						<div class="name_cart_input"><%= calendar_date_select_tag "delivery[date]",nil,:popup => 'force',:year_range => 0.months.from_now..3.months.from_now,:style => "width:200px; height:23px; font-size:14px;",:id=>"profile_dob" %>
+						<p>(Ondate devliery is not available for orders received after 2pm)</p>
+						</div>
+						
+					</div>
+						<div class="clear" style="height:4px;">&nbsp;</div>
+					<div class="new_cart_main">
+						<div class="name_cart">Comments</div>
+						<div class="name_cart_input"><textarea id="order_note" name="orders[note]" ></textarea>
+						<p>(Your personal message or special instructions)</p>
+						</div>
+						
+					</div>
+					<div style="clear:both">&nbsp; </div>
+					
+		<% if @user.role_id.to_i == 3 %>
+				        <div class="new_cart_main" style="padding-top:10px;">
+						<div class="name_cart" style="width:350px;padding-left:175px;">
+					
+						<input name="addresslist" type="checkbox" style="vertical-align:top;"/><span style="position:relative; top:-5px; left:5px;">Add this recipient to your Address Book <a href="javascript:void(0)" onmousemove="showtip(event, 'Address Book helps you to save all the addresses you send gifts most often and next time you would like to gift someone in the list, simply you can select from the available addresses and everything gets auto-filled.');"onmouseout="hidetip();" >?</a></span></div>
+		</div>
+		<div id="mktipmsg" ></div>
+		<% end %>
+			</div>
+			
+			    <div class="new_cart_main">
+						<div class="name_cart">&nbsp;</div>
+						<div class="name_cart_input">
+						
+					
+						
+						<div style="width:150px;float:right;">
+						
+				<!--<input type="image" src="/images/shopping/cart_back.gif" id="back_form"  class="next"/>	-->	
+						
+						
+						<div style="float:left; margin-right:10px;">
+						<img src="/images/shopping/cart_back.gif" id="back_form" class="next" onclick="valuesbackup(); return back_div1();" width="68" height="26"></div> 
+						
+						<div style="float:left; border:0px;"><input type="image" src="/images/shopping/cart_next.gif" onclick="return confirm_values();" id="con_form"  class="next"/></div></div>
+							<div id="next_block_app1" style=" color:#FF0000;float:right; margin-right:10px; display:none ">Your next Step is loading. Please wait...</div>
+						</div>
+					</div>
+			
+			
+					
+
+						<!--<div class="new_cart_main">
+						<div class="name_cart">&nbsp;</div>
+						<div class="next" align="right" style=" position:relative; right:20px;"><img src="/images/shopping/cart_back.gif" id="back_form"> &nbsp; 
+						
+						<input type="image" src="/images/shopping/cart_next.gif" onclick="return confirm_values();" id="con_form"  />
+						</div>
+					</div>-->
+						
+			
+			 
+			 <%= render :partial => "zipcode_popup" %>
+		
+		
+		
+		
+	
+					
+					</div>
+					<% end %>
+				
+					
+					<% end %>

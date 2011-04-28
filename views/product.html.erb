@@ -1,0 +1,182 @@
+<script type="text/javascript">
+function show_image(pid, install_dir_name){
+    $('large-image').innerHTML = "Loading image ...";
+    var ajax = new Ajax.Updater('large-image', 
+        install_dir_name + '/shopping/large_image/?pid='+ pid, 
+        {asynchronous:true});
+    
+}
+function show_cart(){
+    if ($('cart-area').style.display == "none"){
+        Effect.Appear('cart-area');
+        $('show-hide-link').innerHTML = '<a href="#show.cart#" onclick="show_cart();">Hide Cart</a>'
+    }else{
+    Effect.Fade('cart-area');
+    $('show-hide-link').innerHTML = '<a href="#show.cart#" onclick="show_cart();">View My Shopping Cart</a>'
+}
+}
+function show_popup(url)
+{
+window.open(url,"mywindow","width=720,height=500,scrollbars=yes,resizable=yes,top=100,left=120");	
+}
+</script>
+<%= javascript_include_tag "jobs" %>
+
+ <% @reportvar = 1 -%>
+  <!--maindiv-->
+      <div class="top_main">
+       <!--movie top block start-->
+     
+       <%= render :partial => 'product_details_topblock' %>
+        <!--movie top block end-->
+       <!--top-->
+        <!--Left DIV-end-->
+        <!--middletop-->
+        <div class="top_main_1">
+          <!--Left DIV Start-->
+          <div class="main_top_new">
+            <!--Movie Details start-->
+             <%= render :partial => 'product_details_block' %>
+            <!--Movie Details-end-->
+            <div class="clear"></div>
+            <!--Paid Ads start-->
+            <%#= render :partial => 'home/mark_inappropriate', :locals => {:id => @product.id } %>
+            
+            <% unless @similar_products.blank? %>
+			<div class="paid_adds_new">
+            <div class="main_topinner">
+            <%= render :partial => 'related_products' %>
+            </div></div>
+			<% end %>
+			
+            <!--Paid Ads div-end--->
+            <!--review-->
+            <div class="paid_adds_new">
+            <%#= render :partial => 'product_review_block' %>
+            </div>
+            <!--review-div-end-->
+          </div>
+          <!--Right DIV Start-->
+          <div class="right_detail">
+            <div class="right_detailbg">
+            
+        <div style="height:300px;" id="large-image"><%= show_first_image(@product) %></div>
+        
+       <% if @product.images.size > 1 %>
+	    <div class="product_bg" style="margin-top:5px">  
+           
+        <span class="click_bg">Click to enlarge</span>
+		 <% for img in @product.images %>
+        <span class="change_product">
+		 <a href="#image.do-change#"  onclick="show_image('<%= img.id %>','<%=Shop.install_dir_name %>');">
+              <%= image_tag(url_for_file_column(img, "image", "thumb"),:alt=>"Click to view large picture",:style=>"border:solid 1px #eaeaea;")%></a> 
+        </span>
+		<% end %>
+		</div>
+		<% end %>
+		  </div>
+            
+            
+      <!--  
+              <div class="related">
+              
+              
+              <div style="background:url(/images/help_bg.jpg) repeat-x top; height:33px; width:348px; border-left:1px solid #dfdedf ; margin:0px 0px 0px 2px; padding:0px; border-right:1px solid #dfdedf ;">
+              
+              <div style="float:left;  width:100px; padding:10px 0px 0px 10px; height:33px; font:bold 14px Arial, Helvetica, sans-serif; color:#0099FF; background:url(/images/left_bg.jpg) no-repeat right top;">Tags List</div>
+              
+                </div>
+        
+        
+        
+        <div><% #if !@movie.keywords.blank?%>
+ <%#= render :partial => '/list/related_tags', :locals => {:keywords_render=>@movie.keywords, :popular_searches=>@popular_searches, :search_term=>"#{$host}/movies?radio_top=MOV"} %>
+         <%#end%> </div>
+        
+              </div>
+            -->
+            
+            <!--Related Listing DIV Start-->
+            <div class="right_related">
+              <div class="related">
+             <%= render :partial => 'product_featured' %>
+              </div></div>
+            <!--Related Listing DIV -end-->
+            
+		<div class="square_ad">
+        <% if @square_adv %>
+        <div style="width:335px; height:285px;overflow:hidden; margin-top:5px; margin-bottom:5px;"> <%= render :partial => 'events/square_adv' %> </div>
+        <% else %>
+        <div class="google_add">
+          <script type="text/javascript"><!-- 
+				google_ad_client = "pub-9778363768235275"; 
+				/* 336x280, created 1/2/09 */ 
+				google_ad_slot = "0375876895"; 
+				google_ad_width = 336; 
+				google_ad_height = 280; 
+				//--> 
+				</script>
+          <script type="text/javascript" 
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+				</script>
+        </div>
+        <% end %>
+      </div>
+
+
+            <!--this might help you-->
+              <%= render :partial => 'product_might_helpblock' %>
+            <!--this might help you End-->      
+            
+            
+          
+            <!--Add You Business DIV-end-->
+            <div class="clear"></div>
+          </div>
+          <!--Right DIV -end-->
+        </div>
+
+         
+        <div style="background-color:#FFFFFF; width:964px; float:left; height:5px;">&nbsp;</div>
+        <%#if !@movie.keywords.blank?%>
+ <%#= render :partial => '/list/related_tags', :locals => {:keywords_render=>@movie.keywords, :popular_searches=>@popular_searches, :search_term=>"#{$host}/movies?radio_top=MOV"} %>
+         <%#end%> 
+         
+           <%# if !@movie.popular_searches.blank?%>
+<%#= render :partial => '/list/popular_search', :locals => {:popular_searches=> @movie.popular_searches, :popular_search_term=>"#{$host}/movies?radio_top=MOV"}  %>
+<%# end %> </div>
+<div style="background-color:#FFFFFF; width:964px; float:left; height:10px;">&nbsp;</div>
+        <!--middletop-div-end-->
+      </div>
+    
+      <!--top-div-end-->
+      <!--Footer start-->
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,728 @@
+<script type="text/javascript">
+
+function get_cookie(Name) {
+var search = Name + "="
+var returnvalue = "";
+if (document.cookie.length > 0) {
+offset = document.cookie.indexOf(search)
+// if cookie exists
+if (offset != -1) { 
+offset += search.length
+// set index of beginning of value
+end = document.cookie.indexOf(";", offset);
+// set index of end of cookie value
+if (end == -1) end = document.cookie.length;
+returnvalue=unescape(document.cookie.substring(offset, end))
+}
+}
+return returnvalue;
+}
+
+function valuesbackup()
+{
+
+to_phone = document.getElementById('user_phone_no').value;
+order_to_name = document.getElementById('order_to_name').value;
+street_address1 = document.getElementById('street_address1').value;
+to_zip= document.getElementById('to_zip').value;
+profile_dob=document.getElementById('profile_dob').value;
+order_note=document.getElementById('order_note').value;
+
+document.cookie="cookie_to_phone="+to_phone
+document.cookie="cookie_to_name="+order_to_name
+document.cookie="cookie_to_street_address1="+street_address1
+document.cookie="cookie_to_zip="+to_zip
+document.cookie="cookie_profile_dob="+profile_dob
+document.cookie="cookie_order_note="+order_note
+}
+window.onload = deletecookie();
+function deletecookie()
+{
+
+to_phone = "";
+order_to_name = "";
+street_address1 = "";
+to_zip= "";
+profile_dob = "";
+order_note = "";
+
+
+   document.cookie="cookie_to_phone="+to_phone
+document.cookie="cookie_to_name="+order_to_name
+document.cookie="cookie_to_street_address1="+street_address1
+document.cookie="cookie_to_zip="+to_zip
+document.cookie="cookie_profile_dob="+profile_dob
+document.cookie="cookie_order_note="+order_note
+}
+
+
+
+
+</script>
+
+<%= render :partial => "gifts_scripts" %>
+	 
+<!--main block start-->
+<div class="top_main">
+
+	 <div id="cart_main">
+	 
+	 
+	 		<!--center content block start-->
+			 <div class="checkout_main">
+			 
+			 <div class="top_form_block">
+			<div class="gift_heading_text"> <p><b>Your Gifts Box</b> 
+			<img src="/images/spinner_new.gif" id="progress_image" style="display:none;"></p> </div>
+			
+			
+			<div class="flo_left" style="margin-top:5px; float:right">
+			 <p  class="flo_right" id="continue" style="magin:0; display:block;"><!--<a href="#">Continue Shopping</a>-->
+			 <%#= link_to('Continue Shopping', :action=>'index') %>
+				<%= link_to(image_tag("/images/shopping/continue-2.gif",:alt=> "Add more items to your gift box", :title=>"Add 
+more items to your gift box"),{ :action => :index}) %>
+			 </p>
+			 <p  class="flo_right" style="display:none; margin-right:10px;" id="disable_continue" >
+             <%= image_tag("/images/shopping/continue.gif") %>
+			 </p>
+			 
+			 
+			 </div>
+			
+			
+			<div style="float:right; ">
+			
+			<img src="/images/faq.jpg" style=" position:relative; top:8px">
+			<a href="http://inkakinada.com/gifts/frequently-asked-questions" target="_blank" style="color:#6e1713; font-size:12px;text-decoration:none;font-weight:normal; text-indent:inherit; ">Frequently Asked Questions</a>
+</div>
+			
+			 <div id="delete_gift">
+			 
+			 <%= render :partial => "delete_gift" %>
+			 </div>
+			 
+			 
+			 <div class="clear"><span></span></div>
+			 
+			 </div>
+			 
+			 <% if session[:user_id].blank? %>
+			 <div id="lightEx1" class="white_content"> 
+		 <div style=" position:absolute; z-index:5000; top:-25px; right:-18px"><a href="javascript:void(0)" onClick="document.getElementById('lightEx1').style.display='none';document.getElementById('fade').style.display='none';return close_lightbox();"><img src="/images/pop_close.png" id="close_button"></a></div>
+		 
+	 			<div class="pop_main_style">
+			
+				<div class="pop_main_left">
+				<img src="/images/round_pop.gif" class="or_img">
+						<div class="login_main_leftinner">
+						<h2>Login Now</h2>
+						<div>&nbsp;</div>
+							
+						<% form_for :user,  :url => { :controller => :gifts, :action => :gift_login} do  %>
+						<%# form_remote_tag(:update => "mylogin",:loading => "",:complete => "",:url =>{ :controller => 'shopping',:action => 'gift_login'}) do %>
+						
+						<div>
+							<div class="login_single_block">
+								<div>Email</div>
+								<div>
+								<input type="text" id="username1" name="username1" size="25" maxlength="128" value="Enter Email Address" class="input input_new" type="text" onKeyUp="if(event.keyCode==13) showOptions();" onFocus="if(this.value=='Enter Email Address') this.value='';" onBlur="if(this.value=='') this.value='Enter Email Address';" > 
+								<p class="error">&nbsp;</p></div>
+							</div>
+							
+							<div class="login_single_block">
+								
+									<div class="password_block">
+									<div>Password</div>
+									<div><input type="password" maxlength="128"  id="password1" name="password1"></div>
+									</div>
+									
+									<div class="password_blockright">
+									 <%#= link_to "Forgot Password ?", {:controller=>'home',:action => 'forgot_password'} %>
+									 	<a href="http://www.inkakinada.com/forgot_password" target="_blank">Forgot Password ?</a>
+									</div>
+							
+								
+							</div>
+							<% if  !flash[:existed_user_login_error].blank? %><span style="color:#FF0000"><%=  flash[:existed_user_login_error] %></span><% end %>
+							<div style="clear:both">&nbsp;</div>
+							<div><input src="/images/login_new.gif" type="image"  class="login_main_button" onclick="return loginform();"></div>
+							
+							<div class="pop_main_line">&nbsp;</div>
+							
+							<!--<div><img src="/images/Sign-in-with-Twitter-darker.png"></div>-->
+						</div>
+						
+				<% end %>		
+						 </div>
+					
+					</div>
+				
+	
+					 
+					 <% form_remote_tag(:update => "mylogin",:loading => "",:complete => "",:url =>{ :controller => 'gifts',:action => 'guest_user_login'}) do %>
+					
+					<div class="pop_main_right">
+						<div class="pop_main_leftinner" style="margin:0px 0px 0px 20px; width:350px;">
+						<h2>Sign up for Free Account</h2>
+						<div>&nbsp;</div>
+						<div>
+							<div class="login_single_block">
+								<div>Your Name</div>
+								<div>
+								<%= text_field "user","name",:id=> 'newusername' %>
+								
+								<p class="error"><%= error_message_on :user, :name %></p></div>
+							</div>
+							
+							<div class="login_single_block">
+								<div>Email</div>
+								<div><%= text_field "user","email",:id => 'email'%><p class="error"><%= error_message_on :user, :email %></p></div>
+							</div>
+							
+							
+							<div class="login_single_block">
+								<div>Password</div>
+								<div><%= password_field "user","password",:id => 'newpassword' %><p class="error"><%= error_message_on :user, :password %></p></div>
+							</div>
+							
+							<!--<div class="login_single_block">
+								<div>Re-type Password</div>
+								<div><%#= password_field "user","password_confirmation",:id =>'password_confirmation'%><p class="error"><%#= error_message_on :user, :password_confirmation %></p></div>
+							</div>-->
+							
+								<div style="clear:both"><span></span></div>
+							<div style="color:#FF0000;" id="registeruser"></div>
+						
+								
+							<div class="login_main_line"><span></span></div>
+							
+							<div>
+								<div class="flo_left">
+								<input src="/images/signup_log.gif" type="image" class="sign_main_button" onclick="return valid();">
+								</div>
+						
+						<div class="loginor_text">or</div>
+						<div class="loginor_textlink"><a href="javascript://" onclick="return guest_div();">Continue as guest</a></div>
+							</div>
+							
+						</div>
+						
+					
+						 </div>
+					
+					</div>
+				<% end %>
+					<div style="clear:both"></div>
+				</div>
+				
+				
+				
+				</div>
+             <div id="fade" class="black_overlay_new"></div>
+            <% end %>
+			
+		 <% if flash[:notice] %>
+            <p style="padding:4px 0px 1px 9px; color:#FF0000;"><%= flash[:notice] %></p>
+             <% end %>
+
+			<div class="cart_middle" id="inner_form_block">
+			
+			 <!--block1 start-->
+			<div class="shop_cart_bg" id="1">
+	<div id='test1'><h2 id="gift1_fr"><a href="#" id="main_gift1">1.Gift From</a><img src="/images/shopping/inshope_button_down.gif" id="gift1_open1"></h2></div>
+			
+			<div id="main_div_gif1" style="display:none">
+			
+			
+				<!--form block1 start-->
+				<div style="width:880px; clear:both;  height:auto; overflow:hidden; margin:0px 0px 0px 30px; padding:0px;" id="checkout">
+			
+			
+				<% form_remote_tag(:update => "myaddress1",:loading => "",:complete => "",:url =>{ :controller => 'gifts',:action => 'step1_sucess'}) do %>
+				<div style="width:580px; height:auto;  float:left; margin:20px 0px 20px 0px; clear:both; background:url(/images/shopping/dot_shoping.jpg) repeat-y right;" id="mylogin">
+				
+					<div class="new_cart_main">
+						<div class="name_cart">Your Name</div>
+						<div class="name_cart_input"><input type="text" id="from_name" , value="<% if !@user.blank? %><%= @user.name %><% end %>" name="orderfrom_name" >
+					
+						</div>
+					</div>
+				
+						<div class="new_cart_main">
+						<div class="name_cart">Email</div>
+						<div class="name_cart_input"><input type="text" id="from_email" , value="<% if !@user.blank? %><%= @user.email %><% end %>"  name="orderfrom_email">
+						
+						</div>
+						
+					</div>
+		
+					<div class="new_cart_main">
+						<div class="name_cart">Phone</div>
+						<div class="name_cart_input"><input type="text" id="phone_no"  name="from_phone"  value="<% if !@user.blank? %><%= @user.mobile_number  %><% end %>" ><p>(Enter Country Code)</p>
+						
+						</div>
+						
+					</div>
+			
+					<div class="new_cart_mainarea" style="padding-top:10px;">
+						<div class="name_cart">Address</div>
+						<div class="name_cart_input"><textarea id="street_address" name="from_street" ><% if !@user.blank? %><%= @user.address%><% end %></textarea>
+						
+						</div>
+					</div>
+					
+					
+				
+					<div class="new_cart_main">
+						<div class="name_cart">City</div>
+						<div class="name_cart_input"><input type="text" id="city"  name="from_city" value="<% if !@user.blank? %><%= @user.city  %><% end %>" >
+						
+						</div>
+					</div>
+					
+					
+					
+					
+					<div class="new_cart_main">
+						<div class="name_cart">State</div>
+						<div class="name_cart_input"><input type="text" id="state"  name="from_state" value="<% if !@user.blank? %><%= @user.state  %><% end %>" >
+						
+						</div>
+					</div>
+					
+						
+					
+					
+					<div class="new_cart_main">
+						<div class="name_cart">Country</div>
+						<div class="name_cart_input">
+						<%#=  @user.country %>
+						<% if @user %>
+						<% if !@user.country.blank? %>
+					 <%= country_select("from_country", "country", @user.country,{},:style => 'width:350px;',:name => "mycountry") %>
+						<% else %>
+	               <%= country_select("from_country", "country", nil,{:include_blank => "Select Country"},:style => 'width:350px;',:name => "mycountry") %>
+					<% end %>	
+					
+					<% else %>
+	               <%= country_select("from_country", "country", nil,{:include_blank => "Select Country"},:style => 'width:350px;',:name => "mycountry") %>
+					<% end %>	
+					
+						</div>
+					</div>
+					
+					<div class="new_cart_main">
+						<div class="name_cart">Zip Code</div>
+						<div class="name_cart_input"><input type="text" id="zipcode"  name="from_zipcode" value="<% if !@user.blank? %><%= @user.zipcode  %><% end %>" >
+						
+						</div>
+					</div>
+					
+					
+					
+					<!--<div class="new_cart_main">
+						<div class="name_cart">Your Date of Birth <span><a href="javascript:void(0)" onmousemove="showtip(event, 'We keep your date of birth private and will use it for potential purpose. Thanks for sharing.');"onmouseout="hidetip();" >[?]</a></span></div>
+						<div class="name_cart_input">
+						<%# if !@user.date_of_birth.blank? %>
+						<%#= calendar_date_select_tag "delivery[date]",nil, :year_range => 65.years.ago..18.years.ago,:style => "width:200px; height:23px; font-size:14px;",:id=>"date_dob", :popup => 'force', :value=> "#{@user.date_of_birth.strftime('%m/%d/%Y')} "  %>
+						
+						<%# else %>
+							<%#= calendar_date_select_tag "delivery[date]",nil, :year_range => 65.years.ago..18.years.ago,:style => "width:200px; height:23px; font-size:14px;",:id=>"date_dob", :popup => 'force'  %>
+						<%# end %>
+						
+						</div>
+					</div>-->
+					
+					
+					<!--<div style="width:390px; margin:0px auto; font:13px Arial, Helvetica, sans-serif; float:right;">
+					
+						<div style="float:left;"><div class="flo_left">Do you want to save this address</div>
+					<div class="flo_left" style="margin:1px 0px 0px 0px;"><input name="status[inform]" type="checkbox" style="height:15px; width:20px;" id="status_inform" /></div></div>
+					
+					<div style="float:left; margin:0px 0px 0px 10px;"><div class="flo_left">Reset</div>
+					<div class="flo_left" style="margin:1px 0px 0px 0px;"><input name="status1" type="checkbox" style="height:15px; width:20px;" onclick="return myresetfun();" /></div></div>
+					
+					</div>-->
+					
+					
+					
+					
+					
+					
+					<div class="clear">&nbsp;</div>
+					
+					
+				<script type="text/javascript">
+function myresetfun()
+{
+	
+
+
+	document.getElementById('phone_no').value = '';
+	document.getElementById('zipcode').value = '';
+	document.getElementById('street_address').value = '';
+	document.getElementById('date_dob').value = '';
+}
+
+</script>	
+					
+					
+					
+					
+				<div class="new_cart_main">
+						<div class="name_cart">&nbsp;</div>
+						<div class="name_cart_input">
+						
+						
+						
+						<div style="width:100px;float:right;"><input type="image" src="/images/shopping/cart_next.gif" id="next_form_my" style="margin:0px 0px 0px 0px;" onclick="return new_form();" class="next"/></div>
+						<div id="next_block_app" style=" color:#FF0000;float:right; display:none;">Your next Step is loading.Please wait...</div>
+						
+						</div>
+					</div>
+					
+					</div>
+			
+			  <% end %>
+					
+					
+				<div style="width:300px; float:left; margin:5px 0px 0px 0px;">
+				
+				<div class="cart_headding">Step 1: Gift From</div>
+				
+				<div class="shop_textsamp">
+				
+				
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Name</div>
+				<div class="step1_dec"> Provide your full name for better reference</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Email</div>
+				<div class="step1_dec">The email address where InKakinada can contact you. Helps you to track orders. </div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Phone</div>
+				<div class="step1_dec">Multiple Numbers can be separated by commas. Format: +919000900008</div>
+				
+				</div>
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Address</div>
+				<div class="step1_dec">We require your complete address as a part of payment security.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">City</div>
+				<div class="step1_dec"> We require your city name as a part of payment security.</div>
+				
+				</div>
+				
+				
+						
+			   <div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">State</div>
+				<div class="step1_dec">We require your state name as a part of payment security.</div>
+				
+				</div>
+	
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Country</div>
+				<div class="step1_dec"> We require your country name as a part of payment security.</div>
+				
+				</div>
+				
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Zip Code</div>
+				<div class="step1_dec">We require your zip code as a part of payment security.</div>
+				
+				</div>
+				
+
+				<div class="step1_clear">&nbsp;</div>
+				
+				
+				
+				
+				<div class="step1_content">
+				
+				
+				<div class="step1_dec" style="width:250px;">Click on <span style="color:#880a05;"><strong>"&nbsp;Next&nbsp;"</strong></span> button and wait for <span style="color:#880a05;"><strong>Step 2</strong></span> to appear.</div>
+				
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+					
+				</div>
+				
+				
+				</div>
+				
+			
+				</div>
+				<!--form block1 end-->
+				
+			
+			
+			
+			
+			</div>
+			</div>
+			 <!--block1 end-->	
+		
+			 
+			 
+			   <div id="myaddress1"> 
+			 <!--block2 start-->
+			<div class="shop_cart_bg" id="2">
+		<div id='test2'><h2 id="gift2_fr"><a href="#" id="main_gift2">2.Gift To</a>
+			<img src="/images/shopping/inshope_button_down.gif" id="gift1_open2">		
+	
+			</h2></div>
+			
+			<div id="main_div_gif2" style="display:none">
+			
+			
+				<!--form block1 start-->
+				<div  id="fadeoutButton123" style="width:880px; clear:both;  height:auto; overflow:hidden; margin:0px 0px 0px 30px; padding:0px;">
+			
+				
+					
+					
+					
+					
+					</div>	
+				
+				<div id="mktipmsg" ></div>
+				 <%# form_for :sucess,:url =>{ :controller => 'shopping',:action => 'show_success',:id =>@user.id } do %>
+			
+			  
+					<%= render :partial => "gift_to" %>
+					
+						
+				
+				<div style="width:300px; float:left; margin:5px 0px 0px 0px;">
+				
+				<div class="cart_headding">Step 2</div>
+				
+				
+				
+				<div class="shop_textsamp">
+				
+				
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">To Name</div>
+				<div class="step1_dec">Provide the name of person that you would like to send the gift.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Delivery Address</div>
+				<div class="step1_dec">Please included the complete delivery of Kakinada. Click here to see the <a href='http://www.inkakinada.com/areas' target='_blank'>list of areas</a> where our merchants can deliver your gifts in Kakinada</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+						<div class="step1_content">
+				
+				<div class="step1_name">Zipcode</div>
+				<div class="step1_dec">Please provide the zipcode.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Phone Number</div>
+				<div class="step1_dec">Your friends phone number. This will help us to communicate the receipt of Gift.</div>
+				
+				</div>
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Delivery Date</div>
+				<div class="step1_dec">Delevery date must be any date below 3 months from current date.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				<div class="step1_name">Comments(optional)</div>
+				<div class="step1_dec">Extra insturctions you would like to specify for your order.</div>
+				
+				</div>
+				
+				<div class="step1_clear">&nbsp;</div>
+				
+				<div class="step1_content">
+				
+				
+				<div class="step1_dec" style="width:250px;">Click on <b>"Next"</b>(change confirm to next) button and wait for <b>Step 3</b> to appear</div>
+				
+				</div>
+			
+				</div>
+				
+			
+				
+				
+				
+				</div>
+				
+		
+				</div>
+				<!--form block1 end-->
+				
+			
+			
+			
+			
+			</div>
+			
+			</div> <!--myaddress1 end-->
+			
+		
+			<!--block2 end-->	
+			
+			 <!--block3 start-->
+				<div class="shop_cart_bg" id="3">
+			<div id="test3"><h2 ><a href="#"  id="main_gift3">3.Pay For Gift (s)</a>
+			<img src="/images/shopping/inshope_button_down.gif" id="gift1_open3">	
+			
+			</h2></div>
+		
+			<div id="fadeoutButton2">
+			
+			<!--form block1 start-->
+			<div id="main_div_gif3" style="display:none">
+				<div class="clear">&nbsp;</div><div class="clear">&nbsp;</div>
+					
+		
+		<div class="new_thanq_blockleft">
+					<p>That's it. </p>
+											
+				
+				<div class="content">Please accept the Terms of use to proceed to our secured payment gateway service provider website. We accept Debit Cards,Credit Cards and Netbanking to process your payments. Click on 'Make Payment' button upon acceptance.</div>
+				
+			<div style="margin:1px 0px 0px 0px; float:left;">	
+			<input type="checkbox" id="terms_conditions1" >	<a href="http://www.inkakinada.com/terms-of-use#gifts" target="_blank">Terms of Use</a>
+			
+			</div>	
+				<div style="clear:both"></div>
+				
+		<div class="cart_middle" id="myaddress">		
+			<div class="flo_right" align="left">
+	<% @ITC=@items_desc %>	
+
+<%# form_for :payment_submit, :url => {:action => 'confirmation'} do -%>			
+
+<input type="image" src="/images/shopping/cart_continue.gif" value="Continue Payment" onclick="return terms_con();" />
+
+				
+	<%# end %>			
+				</div>	
+				</div> <!--Myaddres div-->
+		</div>			
+					<script language='JavaScript'>
+function openLogo(ClientID)
+{
+var attributes = 'toolbar=0,location=0,directories=0,status=0, menubar=0,scrollbars=1,resizable=1,width=550,height=600,left=0,top=0';
+sealWin=window.open('http://www.ccavenue.com/verifySeal.jsp?ClientID=M_inkkd_15569' ,'win',attributes); 
+self.name = 'mainWin'; 
+}
+</script> 
+	
+<div class="new_thanq_blockright">  <a href="javascript:openLogo('M_inkkd_15569')"><img src="http://www.ccavenue.com/images/ccav_secure_banner.gif" border=0></a></div>
+<!--<div class="new_thanq_blockright"><img src="/images/shopping/shop_thanks.jpg"></div>-->		
+	
+					
+				<div class="clear">&nbsp;</div>	
+				
+				
+			
+			
+				</div>
+			<!--form block1 end-->
+			</div>
+			
+			
+			</div>
+			
+			
+			</div>
+			<!--block3 end-->		
+				
+				
+				
+				</div>
+			
+			
+			
+			 
+			 </div>
+		    <!--center content block end-->
+	 
+	 
+	 
+	 </div>
+	 <!--<div ID="lightEx1"  class="white_content" >
+<p>Sure with your order? You can't further change the details once you confirm.' </p>
+<input type="submit" value="yes" onclick="sample_gift(document.getElementById('lightEx1').style.display= 'none');" />
+<input type="button" value="No" id="close"  />
+</div>-->
+
+
+
+
+
+</div>
+<!--main block end-->
+
+

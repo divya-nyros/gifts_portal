@@ -1,0 +1,13 @@
+page.replace  "variantlist_#{@product.id}" ,:partial => 'update_options'
+page.visual_effect :shake, "variantlist_#{@product.id}", :duration => 0.10, :distance => 6
+#page["variantlist_#{@product.id}"].visual_effect :shake, :duration => 0.10, :distance => 6
+
+
+
+page.replace  "quantitylist_#{@product.id}" ,:partial => 'grand_update'
+page.visual_effect :shake, "quantitylist_#{@product.id}", :duration => 0.10, :distance => 6
+#page["quantitylist_#{@product.id}"].visual_effect :shake, :duration => 0.10, :distance => 6
+
+page[:grand_total].replace_html :partial => "grand_update_total"
+page.visual_effect :shake, "grand_total", :duration => 0.10, :distance => 6
+#page[:grand_total].visual_effect :shake, :duration => 0.10, :distance => 6

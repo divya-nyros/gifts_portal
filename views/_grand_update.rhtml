@@ -1,0 +1,17 @@
+
+
+
+                <li class="qty" id="quantitylist_<%=@product.id%>">
+<!--				<input type="text" name="qty[]" value = "<#%= @q %>" size = '3' onchange = "<%#= remote_function(:url => { :action => :grand_update,:id=> @product.id},:with=>"'change_qty_to='+this.value+''") %>" />-->
+
+<select name="qty[]"  style="width:50px" onchange="				  
+			<%= remote_function(:url => { :action => :grand_update,:id=> @product.id},:with=>"'change_qty_to='+this.value+''",:loading => "Toggle.display('progress_image');",:complete =>"Toggle.display('progress_image');") %>">
+   <option value="1" <% if @q == 1 %>selected="selected"<%end%>>1</option>
+    <option value="2" <% if @q == 2 %>selected="selected"<%end%>>2</option>
+	    <option value="3"<% if @q == 3 %>selected="selected"<%end%>>3</option>
+		    <option value="4"<% if @q == 4 %>selected="selected"<%end%>>4</option>
+			    <option value="5"<% if @q == 5 %>selected="selected"<%end%>>5</option>
+   </option>
+</select>
+
+				 </li>

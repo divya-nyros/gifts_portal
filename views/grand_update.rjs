@@ -1,0 +1,6 @@
+
+
+
+page[:grand_total].replace_html :partial => "grand_update_total"
+page.visual_effect :shake, "grand_total", :duration => 0.10, :distance => 6
+

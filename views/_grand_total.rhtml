@@ -1,0 +1,5 @@
+           
+		   <p class="flo_left" style="font-size:13px;" id="grand_total"><div style="float:left; width:120px; border:1px solid #000000"><b class="grand">Grand Total</b> :</div>
+	        <%#= grand_total(@p, @account,@product.id) %>
+			 <div style="float:left; width:180px; border:1px solid #ff0000"><%= @change_total %> | $ <%= (@change_total/Shop.dollar_rate).round_with_precision(2) %></div>
+			   </p>

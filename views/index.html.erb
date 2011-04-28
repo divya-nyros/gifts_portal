@@ -1,0 +1,407 @@
+<%#= @location %>
+<div class="top_main">
+  <!--center-->
+  <div class="bg_main">
+    <!--main left-->
+    <div style="width:182px; float:left; margin-left:2px;">
+      <!--left-->
+      <%= render :partial=>"search_left" %>
+      <!--left end-->
+    </div>
+    <!--main left end-->
+    <!--main center-->
+    <div style="float:right; width:775px; background-color:#FFFFFF;">
+      <!--information bar-->
+      <!--<div style="float:right; width:775px;">-->
+      <!--</div>-->
+      <!--information bar end-->
+      <div class="clear"></div>
+      <!--middle content-->
+      <div style="float:left; width:775px; ">
+        <!--main right-->
+        <!--<div style="width:570px; float:left; padding-left:15px;">-->
+        <div style="width:570px; float:left; padding-left:15px;">
+          <!--left-columns-->
+          <div id="left-columns">
+            <!--left-columns-wrapper-->
+            <div id="left-columns-wrapper">
+              <!--center-->
+              <div id="center">
+                <!--/content-top-->
+                <div id="content-top_search">
+                  <div style="float:left;">
+                    <div class="smsalertsblock" style="width:565px; height:40px;">
+                      <div class="heading_page"><%= Shop.shop_name %></div>
+			           
+					  <% if session[:cart] != nil && session[:cart].size != 0  %>
+					  <div style="float:right; position:relative;">
+ <%= link_to(image_tag("go-gift-btn.gif", :alt=> "Detail yourself & recipient", :title=>"Detail yourself & recipient", :size => "", :border => 0, :class =>"yourclass"),{:controller=>'gifts',:action=>'gift_page'})%>
+	  
+      </div>
+
+	  <% end %>        
+	   <div class="heading_page" style=" font-size:14px; width:370px;">Send Gifts to Kakinada from anywhere in the World</div>
+                      <div class="sub_smsalertsblock">
+                        <div><span></span></div>
+                      </div>
+                    </div>
+					
+					
+                    <div class="clear"><span></span></div>
+                    <div class="areas_text_new"> <%= Shop.shop_description %></div>
+					
+					<div class="clear">&nbsp;</div>
+					<div id="connect_wrapper">
+					
+					<div style="margin:0px auto; position:relative; left:25px;">
+					
+              <ul>
+                <li class="fshare" style="margin:-1px 0px 0px 0px;">
+                  <div style="height:5px"><span></span></div>
+                  <fb:share-button href="<%= $host %><%= request.request_uri %>" type="button"></fb:share-button>
+                </li>
+                <li class="flike">
+                  <div style="height:5px"><span></span></div>
+                  <fb:like href="<%= $host %><%= request.request_uri %>" layout="button_count" show_faces="false" font="tahoma"></fb:like>
+                </li>
+				<li class="digg">
+			      <div style="height:5px"><span></span></div>
+				<a class="DiggThisButton DiggCompact" 
+				href="http://digg.com/submit?url=<%= $host %><%= request.request_uri %>&title=<%= @pagetitle %>">
+				</a>
+				</li>
+                <li class="tweeter_block">
+                  <div style="height:7px"><span></span></div>
+                   <!--<script type="text/javascript">
+	tweetmeme_style = "compact";
+	tweetmeme_url = 'http://www.inkakinada.com/for-sale';
+	tweetmeme_source = 'support@yahoo.com';
+	</script>
+              <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>-->
+			  <a href="http://twitter.com/share" class="twitter-share-button" data-url="<%= $host %><%= request.request_uri %>"  data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>	
+                </li>
+                <!--fshare,flike,tweet-->
+                <li class="yahoo_buzz">
+                  <div style="height:5px"><span></span></div>
+                  <a href="http://www.google.com/buzz/post"
+           class="google-buzz-button" title="<%= @pagetitle %>"
+           data-message="Here&rsquo;s Buzz!"
+           data-url="<%= $host %><%= request.request_uri %>"
+           data-locale="en"
+           data-button-style="small-count"></a>
+              <script type="text/javascript" src="http://www.google.com/buzz/api/button.js"></script>
+                </li>
+                <li>
+                  <div style="height:5px"><span></span></div>
+                   <script type="text/javascript">
+				yahooBuzzArticleHeadline = "<%= @pagetitle %>";
+				yahooBuzzArticleSummary = "";
+				yahooBuzzArticleCategory = "business";
+			
+			</script>
+              <script type="text/javascript"
+	src="http://d.yimg.com/ds/badge2.js"
+	badgetype="small">
+	<%= $host %><%= request.request_uri %>
+</script>
+                </li>
+              </ul>
+              <div class="clear"></div>
+              <div id="fb-root"></div>
+              <script type="text/javascript">
+(function() {
+var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
+s.type = 'text/javascript';
+s.async = true;
+s.src = 'http://widgets.digg.com/buttons.js';
+s1.parentNode.insertBefore(s, s1);
+})();
+</script>
+              <script type="text/javascript">
+		
+		window.fbAsyncInit = function() {
+		FB.init({appId: '125331837505158', status: true, cookie: true,
+				 xfbml: true});
+		};
+		(function() {
+		var e = document.createElement('script');
+		e.type = 'text/javascript';
+		e.src = document.location.protocol +
+		  '//connect.facebook.net/en_US/all.js';
+		e.async = true;
+		document.getElementById('fb-root').appendChild(e);
+		}());
+		</script>
+          <script>
+		function fbs_click()
+		{
+		u=location.href; t=document.title;
+		window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),' sharer', 'toolbar=0, status=0, width=626, height=436'); return false;
+		} 
+		</script>
+		
+		
+		</div>
+		
+		
+            </div>
+                  </div>
+                </div>
+                <!--/content-top end-->
+                <div class="clear" style="height:10px;">&nbsp;</div>
+                <% if @products.blank? %>
+                
+              <% else %>
+			  <% if @products.size > 2 %>
+<% end_number = @products.size + (@current_page_number.to_i - 1) * 10 %>
+<% start_number = end_number - (@products.size - 1) %>
+
+<div class = "hr_div" > <%#= Product.count %><%= @total_products_count.size %> gifts, showing <%= start_number %> to <%= end_number %>
+    (Sort by: 
+    <%= link_to("Latest gifts",:action=>'index',:sort=>'latest')%> | 
+    <%= link_to("Lowest price",:action=>'index',:sort=>'lprice')%> | 
+    <%= link_to("Highest price",:action=>'index',:sort=>'hprice')%> | 
+    <%= link_to("Title",:action=>'index',:sort=>'title')%>
+    )
+</div>
+<% end %>
+              
+              <div class="clear" style="height:10px;">&nbsp;</div>
+              <div class="nextclass1" align="right"> <strong><%= will_paginate @products %></strong></div>
+			   <div class="clear" style="height:10px;">&nbsp;</div>
+              <%@count = 0 %>
+             <% for p in @products %>
+			 <% @ordered = Orderitem.find(:all,:conditions=>  ["product_id = ?", p.id ] ) %>
+			     <% stockless = 0%>
+                  <% for orderd in @ordered %>
+                  <% stockless = stockless + orderd.quantity %>
+                  <% end %>
+			 <% @count = @count + 1 %>
+              <div style="float:left; width:570px">
+                <!--middle-->
+                <div style="width:570px; float:left; margin-top:5px;">
+                  <!--inner middle-->
+                  <div style="width:565px;float:left; margin:0px; padding:0px; border:1px solid #FFFFFF;" onmouseover="changeColor(this);" onmouseout="changeColor1(this);">
+                    <!--Icon_image-->
+                    <!--Icon_image_End-->
+                    <!--thumbnail-->
+                    <div style="width:125px; height:90px; float:left; margin:0px 0px 0px 3px;">
+                      <div class="thumbnail">
+                        <div class="thumbnail-wrapper" title="Big and Beautiful!" style="width:125px; height: 84px;padding-top:5px;padding-left:11px; padding-bottom:2px;">
+                          
+                          <div style="float:left; border:1px solid #cccccc">
+						  <%= show_product_image(p, "medium") %>
+                            
+                       
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--thumbnail end-->
+                  
+                    <!--inner1-->
+                    <div class="movies_search" style="margin-left:8px;">
+                      <div style="width:405px; height:auto; overflow:hidden; float:left;">
+                        <div class="listing-header">
+                          <div class="search_headdings"><%=link_to(p.title,:controller=>'gifts', :action=>'product',:id=>p.perma_link,:cat => p.shopping_category.name.downcase) %></div>
+                        </div>
+                        <!--Location Block-->
+                        <div style="width:405px; height:auto; overflow:hidden; float:left;">
+                          <div style="width:auto;  float:left;">
+                            <div class="listing-normal-attributes">
+                              <div style="width:235px; float:left;">
+                                <!--movie theater-->
+                                 
+                                <div class="bed_bath listing-attribute" style="text-align:left; width:230px;"><%#=h ShoppingCategory.getcat_name(p.shopping_category_id) %></div>
+                                <!--movie theater-->
+                                <!--<div class="listing_location">
+                                  <div class="listing_location1new"><b>Shop:</b> <%#= p.merchant.name if p.merchant %></div>
+                                  <div></div>
+                                </div>-->
+                                <!--Casting -->
+                                <div class="listing_location">
+                                  <div class="listing_location1new"><b>Price:</b> <%= show_price(p, @account) %> INR
+								  
+								  <% product_value = ProductValue.find(:first,:conditions => ["product_id = #{p.id} AND price = #{p.price}"],:order => "price ASC") %> 
+								  <% if !product_value.blank?  %> 
+								  <% if !product_value.weight.blank? %>
+								  &nbsp;&nbsp;|&nbsp;&nbsp; <%= product_value.weight %> kg  
+								  <% end %><% end %>
+								  <%#= show_price(p, @account) %> <%#= (p.price/Shop.dollar_rate).round_with_precision(2) %> </div>
+                                  <div></div>
+                                </div>
+							
+								<div class="listing_location">
+                                  <div class="listing_location1new" style="margin:2px 0px 2px -1px;">
+                                  	
+					<%# if p.stock_level - stockless > 0 %>
+                    <%#=link_to(image_tag("/images/add_cart.gif"),{:action=>'add_to_cart', :pid=>p.id, :ui=>request.request_uri,:quantity=>'1'}, :method => :post) %> 
+					<%=link_to(image_tag("/images/send.gif"),{:action=>'send_gift', :id=>p.perma_link}, :method => :post) %>
+					<%#=link_to('',{:action=>'send_gift', :id=>p.perma_link}, :method => :post , :class=>'emailUs') %>		
+                    <%# else %>
+                  <!--  <img src="/images/add_cart_disable.jpg" onclick="alert('Stock not available')" />-->
+                    <%# end %>
+							</div>
+                            
+                                </div>
+                              
+                              </div>
+                            </div>
+                          </div>
+                          <!--Rating start-->
+                          <div style="width:160px; float:left; margin-left:5px;">
+                           
+                            <div style="width:160px; float:right;">
+                             <!--Display Rating-->
+        <!--<div style="vertical-align:bottom">
+       
+         <%# @rate = Product.find(:first,:select=>"id,rating",:conditions => ["id LIKE ? AND rating != 0  ", p.id]) %>
+                                    
+                                    <% if !p.merchant.rating != 0 %>
+    
+          <div class="top_display">
+            <ul class='star-rating'>
+              <a href="#bottom"><li class='current-rating' style='width:<%= (p.merchant.rating * 30).to_f -%>px;'></li></a>
+            </ul>
+          </div>
+          <div class="clear" style="height:6px"></div>
+          <% else %>
+          <div class="top_display">
+          <a href="#bottom"><img src="/images/stars.jpg"></a></div>
+           <div class="clear" style="height:6px"></div>
+          <div style="clear:both;"></div>
+          <% end %>
+       
+        </div>-->
+        <!--End Display Rating-->
+                              <div class="price_rating"><%#=  image_tag url_for_file_column(p.merchant, "image", "thumb")  if p.merchant.image %> </div>
+                              
+                            </div>
+                           
+                          </div>
+                          <!--Rating End-->
+                        </div>
+                        <div style="width:405px; height:auto; overflow:hidden; float:left;">
+                          <!--reviews -->
+                          
+                          <!--reviews End-->
+                          <!--View More Details-->
+                          <div class="listing_location" style="clear:both;"> <span id="see-details-link<%=@count %>"><a href="javascript://" onclick="Element.hide('see-details-link<%=@count %>');Element.show('details<%=@count %>');Element.show('hide-details-link<%=@count %>');" >View More Details >></a></span> <span id="hide-details-link<%=@count %>" style="display:none; float:left; position:relative;"><a href="javascript://" onclick="Element.hide('hide-details-link<%=@count %>');Element.hide('details<%=@count %>');Element.show('see-details-link<%=@count %>');" >Hide Details >></a></span> </div>
+                        </div>
+                        <!--Location Block End-->
+                      </div>
+                    </div>
+                    <!--inner1 end-->
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+                    <div style="clear:both; overflow:hidden; height:1px;"></div>
+                    <div style="width:500px; float:left; padding-top:8px; padding-left:15px;">
+                      <!-- extended section -->
+                      <div class="expanded-section" id="details<%= @count %>" style="display:none;">
+                        <!-- details module -->
+                        <div class="expanded-listing-module clearfix-left">
+                          <h4 class="expanded-listing-header heading_search_ine">Gift Details</h4>
+                          <div class="listing-expanded-attributes clearfix-left">
+                            <div class="listing-right-module">
+                              <div class="map"></div>
+                            </div>
+                            
+                            <dl class="details listing-attribute">
+                              <dt>Category:&nbsp;</dt>
+                              <dd><span class="mileage"><%= ShoppingCategory.getcat_name(p.shopping_category_id) %></span></dd>
+                            </dl>
+                            <!--<dl class="details listing-attribute">
+                              <dt>Shop:&nbsp;</dt>
+                              <dd><span class="mileage"><%#= p.merchant.name if p.merchant %></span></dd>
+                            </dl>-->
+                            <dl class="fullbody listing-attribute">
+                              <dt>Description:&nbsp;</dt>
+                              <dd><span class="sbody"><%= truncate(p.details,100) %> <%= link_to "(see full description)" ,{:controller => 'gifts', :action => "product",:id => p.perma_link,:cat => p.shopping_category.name.downcase}, :title => "Click here to view details" %> </span></dd>
+                            </dl>
+                            <div class="clearing"></div>
+                          </div>
+                        </div>
+                        <div class="expanded-listing-module clearfix-left">
+                          <h4 class="expanded-listing-header heading_search_ine">&nbsp;</h4>
+                          <div class="action">
+                          <div style="width:190px;  float:left; ">
+                         <img src="/images/send_sms.jpg">&nbsp; <!--<a onmouseover='this.style.cursor="pointer" ' onfocus='this.blur();'  onclick="document.getElementById('PopUp<%#=@count%>').style.display = 'block' " title="Click here to send sms">Send SMS/Email</a></div>-->
+								 <%= link_to_remote "Send SMS/Email", :update => "sendsms",:loading => "Toggle.display('spinner_ten2_#{@count}');",:complete => "Toggle.display('spinner_ten2_#{@count}'); settings = {
+          tl: { radius: 20 },
+          tr: { radius: 20 },
+          bl: { radius: 20 },
+          br: { radius: 20 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ['div']
+      }
+
+     
+      var myBoxObject = new curvyCorners(settings, 'myBox');
+      myBoxObject.applyCornersToAll();",:url => {:action => 'show_sms', :id =>p,
+	  :contr => params[:controller],:act => params[:action],:sms_count=> @count  } %>
+  
+  <div id="spinner_ten2_<%= @count %>" style="float:right; padding-left:5px;display:none;"><%= image_tag "spinner.gif" %></div> 
+	  </div>
+                            <img src="/images/view_details.jpg"><%= link_to "View Full Details" ,{:controller => 'gifts', :action => "product",:id => p.perma_link,:cat => p.shopping_category.name.downcase}, :title => "Click here to view details" %> 
+                            <div class="clearfix"></div>
+                            <div id="894775975-x" class="actionMsg"></div>
+                          </div>
+                        </div>
+                        <!-- /actions-module -->
+                      </div>
+					  <div id="sendsms">  </div>
+                      <!-- /extended-section -->
+                    </div>
+                  </div>
+                  <!--inner middle end-->
+                </div>
+                <!--middle end-->
+              </div>
+              <% end %>
+              <% end %>
+            
+              <div class="nextclass1" align="right"> <strong><%= will_paginate @products %></strong></div>
+            </div>
+            <!--center end-->
+          </div>
+          <!--left-columns-wrapper end-->
+        </div>
+        <!--left-columns end-->
+      </div>
+      <!--main right end-->
+      <!--right-->
+      <div style="width:178px; float:right;">
+               
+       
+        <div id="right">
+      
+         <%= render :partial => 'right_block' %>
+
+          
+        </div>
+        <div class="clearing"></div>
+      </div>
+      <!--right end-->
+    </div>
+    <!--middle content_End-->
+  </div>
+  <!--main center_End--><div style="height:15px; clear:both;">&nbsp;</div>
+</div>
+<!--center end-->
+</div>

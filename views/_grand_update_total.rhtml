@@ -1,0 +1,6 @@
+
+               <div style="float:right; margin:0px; padding:0px;"> <div style="float:left; width:100px; margin-right:20px;"><b class="grand">Grand Total</b> :</div>
+	          <%#= grand_total(@p, @account,@product.id) %>
+			 	 <div style="float:left; width:180px; text-align:center;"><%= number_to_currency(cart_grand_total(session[:cart].items),:unit => " ") %>&nbsp;INR</div>
+		<!--| $ <%#= (cart_grand_total(session[:cart].items).to_f/Shop.dollar_rate).round_with_precision(2) %>-->
+</div>

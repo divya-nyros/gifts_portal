@@ -1,0 +1,64 @@
+
+<div id="products" style="position:absolute; z-index:2; top:13px; left:-17px;display:none;">
+  <div class="main_shop">
+    <div class="main_top_shop"><span></span></div>
+    <!--<div class="clear"><span></span></div>-->
+    <div class="main_bg_shop" id="bigmenu">
+      <div class="top_space_shop">
+        <h1>Categories - <%=link_to "All", {:action=>'index',:controller=>'gifts'} %></h1> 
+        <div class="shop_center_shop">
+         <!-- <div style="clear:both;"></div>-->
+          <% @cat_count_array = [] %>
+          <% ShoppingCategory.top_level_categories.each do |cat| %>
+          <%#= cat.name%> 	  
+		  <!--Main Categories-->
+		  <h3>
+		  	<%=link_to "#{cat.name}", {:action=>'category',:controller=>'gifts',:id=>cat.perma_link} %> 
+		  </h3>
+		  <!--Main end-->
+          <% @cat_count_array << cat.id %>
+          <% end %>
+          <div class="clear"></div>
+		  
+          <% for count_cat in @cat_count_array %>
+          <div style="float:left; width:150px;">
+            <% ShoppingCategory.find(:all, :conditions => ["p_id = #{count_cat}"]).each do |sub| %>
+            <% maincat= ShoppingCategory.find(count_cat)%>
+			
+            <div style="float:left;  margin:0px; width:150px; font:13px Arial, Helvetica, sans-serif;"> 
+			
+			<%#= sub.name%> <%=link_to "#{sub.name}", {:action=>'category',:controller=>'gifts',:id=>sub.perma_link,:cat =>maincat.name.downcase},{:style=>"color:#000;text-decoration:none"} %> 
+			
+			</div>
+            <div class="clear"></div>
+            <% end %>
+          </div>
+          <% end %>
+          <!--	<div class="list_nav_shop">
+		   <ul>
+			<li><a href="#">Cakes</a></li>
+		</ul>
+		
+	</div>-->
+        </div>
+      </div>
+      <!--<div class="clear"><span></span></div>-->
+      <!--<div class="top_space_shop">
+        <div class="headding_shop">Merchants</div>
+        <div class="shop_center_shop" style="background:none; padding-left:0px;">
+          <div class="list_nav_shop">
+            <ul>
+              <li>
+                <%# for ms in Merchant.show_merchants %>
+                <%#= show_merchants_format(ms, "") %> <br/>
+                <%# end %>
+              </li>
+            </ul>
+          </div>
+          <div class="clear"><span></span></div>
+        </div>
+      </div>-->
+    </div>
+    <div class="main_bot_shop"><span></span></div>
+  </div>
+</div>

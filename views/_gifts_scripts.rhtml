@@ -1,0 +1,1393 @@
+<%= javascript_include_tag "prototype" %>
+<%= javascript_include_tag "jquery-1.3.min.download" %>
+<%#= calendar_date_select_includes %>
+<script type='text/javascript' src='http://www.website.com/forum_test/public/min/index.php?g=js'></script>
+<script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
+
+		
+		 <script type="text/javascript">
+		 jQuery.noConflict();
+			function image_disp(id)
+			{
+		
+				if(document.getElementById('main_div_gif'+id).style.display=="none"){
+				jQuery('#main_div_gif1').slideUp();
+				jQuery('#main_div_gif2').slideUp();
+				jQuery('#main_div_gif3').slideUp();
+				
+				jQuery('#main_div_gif'+id).slideDown();
+				
+				
+			document.getElementById('gift1_open1').src='/images/shopping/inshope_button_down.gif';
+			document.getElementById('gift1_open2').src='/images/shopping/inshope_button_down.gif';
+			document.getElementById('gift1_open3').src='/images/shopping/inshope_button_down.gif';
+			document.getElementById('gift1_open'+id).src='/images/shopping/inshope_button.gif';
+			}
+			}
+			
+			function kakinada_code()
+{
+		
+	    jQuery("#zipcode_popup").show(500);
+	    jQuery("#zipcode_popup").attr('display', 'block');
+		jQuery("#fade1").show(0);
+		jQuery("#fade1").attr('display', 'block');
+		   
+		   
+}
+			
+			
+		</script>
+		
+		
+<style type="text/css">
+#mktipmsg {padding: 5px; background-color: #FFF8DC; border: 1px solid #ffff00; width:250px; height:50px;font-family: Arial,Helvetica, sans-serif; font-size: 12px; color: #6b6b6b; display:none; z-index:1000; position:absolute;left:-50px;top:500px; text-align:left; }
+</style>
+<script language="javascript" type="text/javascript">
+String.prototype.trim = function()
+ {
+    return this.replace(/^\s+|\s+$/g,"");
+}
+function showtip(e,message)
+{
+ var x=0;
+ var y=0;
+ var m;
+ var h;
+ if(!e)
+   var e=window.event;
+   if(e.pageX||e.pageY)
+    {
+     x=e.pageX;
+     y=e.pageY;
+     }
+ else 
+  if(e.clientX||e.clientY)
+   {
+    x=e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft;
+    y=e.clientY+document.body.scrollTop+document.documentElement.scrollTop;
+   }
+   
+   m=document.getElementById('mktipmsg');
+  // alert(y);
+  messageHeigth=-10;
+   if((y>10)&&(y<510))
+    {
+     m.style.top=y-messageHeigth+"px";
+     //alert(m.style.top);
+    }
+   if(x < 850) {
+     m.style.left=x+20+"px";
+     }
+   else{
+    m.style.left=x-170+"px";
+    }
+    m.innerHTML=message;
+    m.style.display="block";
+    m.style.zIndex=203;
+    }
+  
+    
+
+function hidetip()
+{
+  var m;
+  m=document.getElementById('mktipmsg');
+  m.style.display="none";
+}
+</script>
+
+
+     <script language="javascript">
+
+	 jQuery.noConflict();
+     jQuery(document).ready(function() {
+               jQuery('#inner_form_block').fadeTo('fast', 0.8);
+			   
+              jQuery('#fadeoutButton').live("click",open_div_new);
+			  jQuery('#back_form').live("click",back_div1);
+			  jQuery('#fadeoutButton1').die("img src");
+			  
+			
+			
+			 <% if  !flash[:existed_user_login_error].blank?  %>
+			 	open_div_new();					
+			 <% end %>
+	
+			
+			 <% if  session[:gift_url] == 'gift_login'  %>
+			
+			 document.getElementById('fadeoutButton').src = '/images/shopping/order.gif';
+			    document.getElementById('continue').style.display = 'none';
+			     document.getElementById('disable_continue').style.display = 'block';
+			 	jQuery('#main_div_gif1').slideDown(); 
+				jQuery('#main_div_gif2').slideUp();
+				jQuery('#main_div_gif3').slideUp();  
+				 document.getElementById('gift1_open2').src='/images/shopping/inshope_button_down.gif';
+				 document.getElementById('gift1_open3').src='/images/shopping/inshope_button_down.gif';
+		   document.getElementById('gift1_open1').src='/images/shopping/inshope_button.gif';
+		  jQuery('#delete_gift').fadeTo('fast', 0.8);
+		  jQuery('#delete_gift').find(':input').attr("disabled", "disabled");
+		  jQuery('p.flo_right').find('a').removeAttr('href');
+		    jQuery('li.lineup').find('a').removeAttr('onclick');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('href');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('onclick');
+	jQuery('#date_show').hide();
+	 jQuery('#date_hide').show();
+     jQuery('#del_show').hide();
+	 jQuery('#del_hide').show();
+	 
+			
+			   <% end %>
+			   
+     });
+	   
+     </script> 
+	
+	<style>
+	.samp_fade{display:inline;position:relative; top:0px; width:290px; height:auto;background:#fff url(/images/bg.png) repeat; z-index:2; cursor:pointer;-moz-opacity: 0.6; opacity:.60; filter: alpha(opacity=60); margin:0;padding:0;}
+	
+	</style> 
+	 
+	 
+
+<script language="javascript" type="text/javascript">
+function back_div1(){
+ 	jQuery("#lightEx2").hide(400);
+	    jQuery("#lightEx2").attr('display', 'none');
+               jQuery('#main_div_gif1').slideDown();  
+				jQuery('#main_div_gif2').slideUp();
+				jQuery('#main_div_gif3').slideUp();  
+				 document.getElementById('gift1_open2').src='/images/shopping/inshope_button_down.gif';
+				 document.getElementById('gift1_open3').src='/images/shopping/inshope_button_down.gif';
+		  document.getElementById('gift1_open1').src='/images/shopping/inshope_button.gif';
+		   
+	document.getElementById('select_delevery').value = 'dsdfdsfdsfd';
+	  
+
+
+}
+
+function guest_div()
+{
+		
+
+		   document.getElementById('lightEx1').style.display= 'none'
+           document.getElementById('fade').style.display='none';
+		   
+		jQuery('#main_div_gif1').slideDown(); 
+		jQuery('#main_div_gif2').slideUp();
+				jQuery('#main_div_gif3').slideUp();  
+	 jQuery('#fadeoutButton').hide();
+	 jQuery('#fadeoutButton_dup').show();
+	 jQuery('#continue').hide();
+	 jQuery('#disable_continue').show();
+	 
+				 document.getElementById('fadeoutButton').src = '/images/shopping/order.gif';
+				    document.getElementById('continue').style.display = 'none';
+			     document.getElementById('disable_continue').style.display = 'block';
+				 document.getElementById('gift1_open2').src='/images/shopping/inshope_button_down.gif';
+				 document.getElementById('gift1_open3').src='/images/shopping/inshope_button_down.gif';
+		        document.getElementById('gift1_open1').src='/images/shopping/inshope_button.gif';
+		  document.getElementById('test2').innerHTML='<h2 id="gift2_fr"><a href="#" id="main_gift2">2.Gift To</a><img src="/images/shopping/inshope_button_down.gif" id="gift1_open2"></h2>';
+		    jQuery('li.lineup').find('a').removeAttr('onclick');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('href');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('onclick');
+			
+			
+		  
+		  
+}
+
+
+
+function sample_gift()
+{
+	
+	  jQuery.noConflict();
+	  
+	   
+	   jQuery('#delete_gift').fadeTo('fast', 0.8);
+	
+	     jQuery('#delete_gift').find(':input').attr("disabled", "disabled");
+	    	jQuery('#next_form').live("click",new_form);
+	       jQuery('p.flo_right').find(':a').removeAttr('href');
+		     jQuery('#date_show').hide();
+	         jQuery('#date_hide').show();
+             jQuery('#del_show').hide();
+	         jQuery('#del_hide').show();
+		   
+	      <% if !session[:user_id].blank? %>
+		  
+		           jQuery('#delete_gift').fadeTo('fast', 0.8);
+					jQuery('#delete_gift').find(':input').attr("disabled", "disabled");
+		   			jQuery('#main_div_gif1').slideDown(); 
+					jQuery('li.lineup').find('a').removeAttr('onclick');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('href');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('onclick');
+				 jQuery('#date_show').hide();
+	         jQuery('#date_hide').show();
+             jQuery('#del_show').hide();
+	         jQuery('#del_hide').show();
+	 
+			
+		  <% end %>
+		   
+		  jQuery('#fadeoutButton').die("click");
+		 
+		 /* jQuery('#main_div_gif1').slideDown();  */
+		  document.getElementById('gift1_open1').src='/images/shopping/inshope_button.gif';
+
+		   document.getElementById('lightEx1').style.display= 'none'
+           document.getElementById('fade').style.display='none';
+		 
+	
+}
+
+function step2()
+{
+	
+	 
+    jQuery.noConflict();
+
+	  jQuery("#lightEx2").show(500);
+	  jQuery("#lightEx2").attr('display', 'block');
+      
+	return false;
+}
+
+
+
+
+
+
+
+function confirm_values()
+{
+	profile_title = document.getElementById('profile_title');
+	//select_delivery = document.getElementById('select_delevery');
+    to_user_name =document.getElementById('order_to_name');
+    street_address1 = document.getElementById('street_address1');
+
+	
+	
+	/*country_confirm = document.getElementById('to_country_country');
+	state_confirm = document.getElementById('to_state');
+    city_confirm = document.getElementById('to_city');*/
+	
+	
+	
+	
+	var numExp = /^[0-9]+$/;
+	phone_no1=document.getElementById('user_phone_no');
+	delivery = document.getElementById('profile_dob');
+	valid_date = document.getElementById('profile_dob').value;
+	
+	
+var fDate = new Date();
+fDate.setDate(fDate.getDate()+90);
+var MM = fDate.getMonth()+1;
+var DD = fDate.getDate();
+var YY = fDate.getFullYear();
+due_date = MM+"/"+DD+"/"+YY;
+
+slected_date = new Date(valid_date);
+
+final_date = new Date(due_date);
+
+	//if(select_delivery)
+	//{
+    // if(select_delivery.value == ""){	alert('Please enter  title');select_delivery.focus();	return false;}
+    //}
+	
+		if (to_user_name){
+	
+	 
+	if(to_user_name.value.trim().length == 0)
+	   { 
+
+		alert("Please enter name.");
+
+		to_user_name.focus();
+
+		return false;
+
+	   }
+    else
+    {
+     to_user_name.value = to_user_name.value.trim();
+	   var mychar = /^([a-zA-Z]*\ ?[a-zA-Z]*)*$/
+	   var temp = to_user_name.value.trim();
+	    if (mychar.test(temp) && temp.length > 2)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid  name.");
+          to_user_name.focus();
+          return (false);
+	    }
+	 
+	 
+	
+ }}
+ 
+  <!--if(select_delivery.value == ""){	alert('Please select address');select_delivery.focus();	return false;}-->
+  if(street_address1.value == "Kakinada Address Only"){
+  	alert('Please enter valid delivery adress.');
+	street_address1.focus();
+		return false;
+	}
+    var mychar = /^[\w]+(\(|\w|,|(|)|[.]|\/| |:|[\n]|[\r]|-|\))*$/
+	if(street_address1.value.trim().length==0)
+	   { 
+
+		alert("Please enter delivery address.");
+
+		street_address1.focus();
+
+		return false;
+
+	   }
+    else
+    {
+	 var temp = street_address1.value.trim();
+	    if (mychar.test(temp) && temp.length > 3)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid delivery address.");
+          street_address1.focus();
+          return (false);
+	    }
+	 
+     }
+
+	  
+ 
+  //if(country_confirm.value == ''){alert("Please select country");country_confirm.focus();return false;}
+   //if(state_confirm.value == ''){alert('Please enter your state');state_confirm.focus();return false;}
+    //if(city_confirm.value == ''){alert('Please enter your city');city_confirm.focus();return false;}
+ 
+ 
+  var mychar = /^[+]?\(?([0-9]+)\)?(([0-9]+)[-]?([0-9]+))*$/;
+	if(phone_no1.value.trim().length==0)
+	   { 
+
+		alert("Please enter phone number.");
+
+		phone_no1.focus();
+
+		return false;
+
+	   }
+    else
+    {
+	 var temp = phone_no1.value.trim();
+	    if (mychar.test(temp) && temp.length > 3)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid phone number.");
+          phone_no1.focus();
+          return (false);
+	    }
+	 
+     }
+
+ 
+old_date_with_hours = '<%=  $indian_time.now %>';
+date_with_hours = "<%= Time.now + (60 * 60 * 11)%>";
+    <% t =Time.now + (60 * 60 * 11)  %>
+
+   //var mydate=new Date(); 
+		var mydate= date_with_hours; 
+		another = new Date(date_with_hours);
+		
+		
+		
+		
+    
+		//var hours= another.getHours(); 
+		var hours= <%= t.hour %>;
+		var dn="AM"; 		
+        if (hours >=12) dn="PM";     
+
+ if(delivery.value == ""){alert('Please choose appropriate delivery date.');delivery.focus();return false;}
+
+ 	if(slected_date > final_date){alert('You must choose the date with in 3 months from the current date.');return false;}
+	
+	var yday = <%= t.day-1 %>;
+    var mon = <%= t.month-1 %>;
+	var tday = <%= t.day %>;
+  
+
+   //alert(yday);
+   //alert(slected_date.getMonth());
+   //alert(slected_date.getDate());
+   //alert(hours); 
+  //if(hours >= 14 && dn=='PM' && slected_date.getMonth() <= mon && slected_date.getDate() <= tday )
+  
+	if(slected_date.getDate() <=  yday && slected_date.getMonth() <= mon)
+	{
+	 alert('You must choose the date from current date. ');
+	 return false;
+	}
+	
+	
+	
+		
+		if(slected_date.getMonth() <= mon && slected_date.getDate() <= tday )
+		{
+			alert('Ondate delivery will be done for orders received before 2pm ISD.Orders received after 2pm are delivered next day.');
+			
+		}
+		
+
+
+  document.getElementById('next_block_app1').style.display = 'block';
+ jQuery("#next_block_app1").fadeOut(5000);
+	open_div_new1();
+    return true;
+     /* step2();
+      response_stpe2 = document.getElementById('confirmbox_status').value;
+
+	 if (response_stpe2 == 0) 
+	  { return false;}*/
+
+}
+
+
+function terms_con()
+{
+
+  terms1 = document.getElementById('terms_conditions1');
+ if(terms1.checked == false) {alert("Please accept our Terms of use.");terms1.focus(); return false;}
+ 
+to_phone = "";
+order_to_name = "";
+street_address1 = "";
+to_zip= "";
+profile_dob = "";
+order_note = "";
+
+
+   document.cookie="cookie_to_phone="+to_phone
+document.cookie="cookie_to_name="+order_to_name
+document.cookie="cookie_to_street_address1="+street_address1
+document.cookie="cookie_to_zip="+to_zip
+document.cookie="cookie_profile_dob="+profile_dob
+document.cookie="cookie_order_note="+order_note
+ 
+   <% session[:guest_user_id] = nil %>
+}
+
+ 
+
+
+
+
+function new_form()
+{
+
+
+	from_name=document.getElementById('from_name');
+	
+	check_out_email=document.getElementById('from_email');
+
+    phone_no_one=document.getElementById('phone_no');
+	 
+	zipcode1=document.getElementById('zipcode');
+   
+    street=document.getElementById('street_address');
+	city=document.getElementById('city');
+    state=document.getElementById('state');
+	country=document.getElementById('from_country_country');
+	/*dob = document.getElementById('date_dob');
+*/
+	var numExp = /^[0-9]+$/;
+	
+	var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+
+	 var mychar = /^([a-zA-Z]*\ ?[a-zA-Z]*)*$/
+	
+	if(from_name.value.trim().length==0)
+	   { 
+
+		alert("Please enter name.");
+ 
+        from_name.value=from_name.value.trim() 
+		from_name.focus();
+
+		return false;
+
+	   }
+    else
+    {
+	 var temp = from_name.value.trim();
+	    if (mychar.test(temp) && temp.length > 2)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid name.");
+          from_name.focus();
+          return (false);
+	    }
+	 
+     }
+	
+	
+if(check_out_email.value == "")
+
+	{
+
+		alert("Please enter email.");
+
+		check_out_email.focus();
+
+		return false;
+
+	}
+
+	 if(!check_out_email.value.match(emailExp))
+
+	{		
+
+		alert("Please enter valid email format.");
+
+		check_out_email.focus();
+
+		return false;
+
+	}
+
+ var mychar = /^[+]?\(?([0-9]+)\)?(([0-9]+)[-]?([0-9]+))*$/;
+	if(phone_no_one.value.trim().length==0)
+	   { 
+
+		alert("Please enter phone number.");
+
+		phone_no_one.focus();
+
+		return false;
+
+	   }
+    else
+    {
+	 var temp = phone_no_one.value.trim();
+	    if (mychar.test(temp) && temp.length > 3)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid phone number.");
+          phone_no_one.focus();
+          return (false);
+	    }
+	 
+     }
+
+
+
+
+		  var mychar = /^[\w]+(\(|\w|,|(|)|[.]|\/| |:|[\n]|[\r]|-|\))*$/
+	if(street.value.trim().length==0)
+	   { 
+
+		alert("Please enter address.");
+
+		street.focus();
+
+		return false;
+
+	   }
+    else
+    {
+	 var temp = street.value.trim();
+	    if (mychar.test(temp) && temp.length > 3)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid address.");
+          street.focus();
+          return (false);
+	    }
+	 
+     }
+
+  
+		 var mychar = /^([a-zA-Z]*\ ?[a-zA-Z]*)*$/
+		
+	if(city.value.trim().length == 0)
+	   { 
+
+		alert("Please enter city.");
+
+		city.focus();
+
+		return false;
+
+	   }
+      else
+    {
+	 var temp = city.value.trim();
+	    if (mychar.test(temp) && temp.length > 2)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid city name.");
+          city.focus();
+          return (false);
+	    }
+	 
+     }
+	
+	 var mychar = /^([a-zA-Z]*\ ?[a-zA-Z]*)*$/
+	if(state.value.trim().length == 0)
+	   { 
+
+		alert("Please enter your state.");
+
+		state.focus();
+
+		return false;
+
+	   }
+      else
+    {
+	 var temp = state.value.trim();
+	    if (mychar.test(temp) && temp.length > 1)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid state name.");
+          state.focus();
+          return (false);
+	    }
+	 
+     }
+	
+	
+	 
+	if(country.value == "")
+
+	{ 
+
+		alert("Please select country.");
+
+		country.focus();
+
+		return false;
+
+	}
+
+	//var mychar = /^[\d]+(\(|\d|,|(|)| |-|\))*$/
+    var mychar = /^\d{3}|[A-Z]-\d{3}|[A-Z]|\d{3}|[A-Z] \d[A-Z] \d[A-Z] \d$/
+if(zipcode1.value.trim().length==0)
+{
+alert("Please enter zip code.");
+zipcode1.focus();
+return (false);
+}
+    else
+    {
+	 var temp = zipcode1.value;
+	    if (mychar.test(temp) && temp.length >= 4)
+	    {
+	   
+	    }
+	    else
+		{
+	      alert("Please enter valid zip code.");
+          zipcode1.focus();
+          return (false);
+		  //alert("hi");
+	    }	 
+     }	
+	
+	
+ document.getElementById('next_block_app').style.display = 'block';
+ jQuery("#next_block_app").fadeOut(5000);
+ 
+/* if(dob.value == ""){alert('Please enter the your date of birth.');dob.focus();return false;}*/
+  document.getElementById('test2').innerHTML='<h2 onclick="image_disp(2);" id="gift2_fr"><a href="#" id="main_gift2">2.Gift To</a><img src="/images/shopping/inshope_button_down.gif" id="gift1_open2"></h2>';
+  
+           
+}
+
+
+
+
+
+function loginform()
+
+{
+
+	 var emailExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+	  email = document.getElementById("username1");
+
+	  password=document.getElementById('password1');
+
+	if(email.value == "Enter Email Address")
+
+	{
+
+	 alert("Email ID is Required");
+
+     email.focus();
+
+     return false;  
+
+  }
+
+  
+
+  if(!email.value.match(emailExp))
+
+	{		
+
+		alert("Invalid Email Format.");
+
+		email.focus();
+
+		return false;
+
+	}
+
+	if(password.value == "Enter password" || password.value == "" )
+
+	{
+
+	 alert("Password is Required.");
+
+     password.focus();
+
+     return false;  
+
+  }
+
+	
+     jQuery('#fadeoutButton').hide();
+	 jQuery('#fadeoutButton_dup').show();
+	 jQuery('#continue').hide();
+	 jQuery('#disable_continue').show();
+	 jQuery('#date_show').hide();
+	 jQuery('#date_hide').show();
+     jQuery('#del_show').hide();
+	 jQuery('#del_hide').show();
+	 
+	sample_gift();
+
+	
+
+}
+
+function valid()
+
+{
+
+	 var emailExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+     user_name = document.getElementById("newusername");
+
+	 email = document.getElementById("email");
+
+	/* password_confirmation=document.getElementById('password_confirmation');*/
+
+	 password_form =document.getElementById('newpassword');
+
+	 if (user_name.value == "")
+
+	 {
+
+		 alert("Your name is required.");
+
+		 user_name.focus();
+
+		 return false;
+
+	 }
+
+	 
+
+	  if (user_name.value != "")
+
+	  {
+
+		   var temp = user_name.value;
+
+		   var obj = /^(\s*)([\W\w]*)(\b\s*$)/;
+
+		   if (obj.test(temp)) { temp = temp.replace(obj, '$2'); }
+
+		   var obj = / +/g;
+
+		   temp = temp.replace(obj, " ");
+
+		   if (temp == " ") { temp = ""; }
+
+		   user_name.value=temp;	
+
+		   var alphanumExp=/^[a-zA-Z0-9\s]+$/
+
+		   if(!user_name.value.match(alphanumExp))
+
+		   {
+
+			   alert("Please donot use special charactres in names.");
+
+			   user_name.focus();
+
+			   return false;
+
+		   }
+
+	  }
+
+
+
+	 
+
+	 if(user_name.value.length < 4)
+
+	 {
+
+		 alert("Your name must be atleast 4 characters.");
+
+		 user_name.focus();
+
+		 return false;
+
+	 }
+
+	 
+
+	 if(email.value == "")
+
+	{
+
+	 alert("Email ID is Required.");
+
+     email.focus();
+
+     return false;  
+
+  }
+
+  
+
+  if(!email.value.match(emailExp))
+
+	{		
+
+		alert("Invalid Email Format.");
+
+		email.focus();
+
+		return false;
+
+	}
+
+	if(password_form.value == "")
+
+	{
+
+	 alert("Password is Required.");
+
+     password_form.focus();
+
+     return false;  
+
+  }
+
+  if(password_form.value.length < 6)
+
+	{
+
+	 alert("Password must be 6 characters.");
+
+     password_form.focus();
+
+     return false;  
+
+  }
+
+	/*if(password_confirmation.value == "")
+
+	{
+
+	 alert("Confirmation Password is Required.");
+
+     password_confirmation.focus();
+
+     return false;  
+
+  }*/
+
+  
+
+  /*if(password_form.value != password_confirmation.value)
+
+  {
+
+	  alert("Password mismatch.")
+
+	  password_form.focus();
+
+	  return false;
+
+  }*/
+
+   guest_div();
+
+}
+
+
+
+
+
+
+function open_div_new()
+{
+
+
+		   <% if !session[:user_id].blank? %>
+		     document.getElementById('fadeoutButton').src = '/images/shopping/order.gif';
+			   document.getElementById('continue').style.display = 'none';
+			     document.getElementById('disable_continue').style.display = 'block';
+		   			jQuery('#main_div_gif1').slideDown(); 
+						 document.getElementById('test1').innerHTML='<h2 onclick="image_disp(1);" id="gift1_fr"><a href="#" id="main_gift1">1.Gift From</a><img src="/images/shopping/inshope_button.gif" id="gift1_open1"></h2>';
+					
+					  document.getElementById('main_div_gif2').style.display = 'none';
+				
+					jQuery('li.lineup').find('a').removeAttr('onclick');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('href');
+		    jQuery('ul.gift_details_link').find('a').removeAttr('onclick');
+		  <% end %> 
+		  
+	    jQuery("#lightEx1").show(500);
+	    jQuery("#lightEx1").attr('display', 'block');
+		jQuery("#fade").show(0);
+		jQuery("#fade").attr('display', 'block');
+		
+	        jQuery('#delete_gift').find(':input').attr("disabled", "disabled");
+	    	jQuery('#next_form').live("click",new_form);
+	       jQuery('p.flo_right').find(':a').removeAttr('href');
+	      jQuery('li.lineup').find(':a').removeAttr('onclick');
+		   
+		   jQuery('#date_show').hide();
+		   jQuery('#date_hide').show();
+		   
+		   jQuery('#del_show').hide();
+		   jQuery('#del_hide').show();
+		  
+		 jQuery('#fadeoutButton').die("click");
+		  jQuery('#back_form').live("click",back_div1);
+		
+		   
+		  
+		  document.getElementById('gift1_open1').src='/images/shopping/inshope_button.gif';
+		  document.getElementById('test1').innerHTML='<h2 onclick="image_disp(1);" id="gift1_fr"><a href="#" id="main_gift1">1.Gift From</a><img src="/images/shopping/inshope_button.gif" id="gift1_open1"></h2>';
+		 
+		 
+}
+
+function close_lightbox()
+{
+	jQuery('#main_div_gif1').slideUp();  
+	  jQuery('#del_show').show();
+		   jQuery('#del_hide').hide();
+	 document.getElementById('test1').innerHTML='<h2 id="gift1_fr"><a href="#" id="main_gift1">1.Gift From</a><img src="/images/shopping/inshope_button_down.gif" id="gift1_open1"></h2>';
+	document.getElementById('test2').innerHTML='<h2 id="gift2_fr"><a href="#" id="main_gift2">2.Gift To</a><img src="/images/shopping/inshope_button_down.gif" id="gift1_open2"></h2>';
+        
+	        jQuery('#delete_gift').find(':input').removeAttr("disabled");
+		     jQuery('p.flo_right').find('a').attr('href','http://www.inkakinada.com/gifts');
+			 
+			
+			 jQuery('#date_show').show();
+		   jQuery('#date_hide').hide();
+		
+		   jQuery('ul.gift_details_link').find('a').attr('href','');
+		    jQuery('ul.gift_details_link').find('a').attr('onclick','');
+			jQuery('li.lineup').find('a').attr('onclick','');
+		    jQuery('li.lineup').find('a').attr('href','');
+		     jQuery('#fadeoutButton').live("click",open_div_new);
+			  jQuery('#fadeoutButton').show();
+	          jQuery('#fadeoutButton_dup').hide();
+	     
+}
+
+function open_div_new1()
+{     
+/*
+		document.getElementById('confirmbox_status').value=1;
+	    jQuery("#lightEx2").hide(400);
+	    jQuery("#lightEx2").attr('display', 'none');*/
+		
+		
+		
+			
+		jQuery('#main_div_gif1').slideUp(); 
+		jQuery('#main_div_gif2').slideUp(); 
+		jQuery('#main_div_gif3').slideDown(); 
+			
+			document.getElementById('gift1_open1').src='/images/shopping/inshope_button_down.gif';
+			document.getElementById('gift1_open2').src='/images/shopping/inshope_button_down.gif';
+		    document.getElementById('gift1_open3').src='/images/shopping/inshope_button.gif';
+		     
+		  document.getElementById('test2').innerHTML='<h2 onclick="image_disp(2);" id="gift2_fr"><a href="#" id="main_gift2">2.Gift To</a><img src="/images/shopping/inshope_button_down.gif" id="gift1_open2"></h2>';
+  document.getElementById('test3').innerHTML='<h2 onclick="image_disp(3);"><a href="#" id="main_gift3">3.Pay For Gift (s)</a><img src="/images/shopping/inshope_button.gif" id="gift1_open3"></h2>';
+		 jQuery('#back_form').live("click",back_div1);
+		return true;		
+
+}
+
+
+
+function close_div()
+{
+	    jQuery("#lightEx2").hide(400);
+	    jQuery("#lightEx2").attr('display', 'none');
+		
+		
+		 document.getElementById('confirmbox_status').value=0;
+		 
+		 return false;
+}
+</script>
+
+<script type="text/javascript">
+ jQuery.noConflict();
+ jQuery(document).ready(function() {
+	    jQuery("#close").click(function() {
+	    jQuery("#lightEx1").hide(400);
+	    jQuery("#lightEx1").attr('display', 'none');
+	   
+	}); 
+
+	    jQuery("#step2_close").click(function() {
+	   
+	   
+	}); 
+
+	   
+		});
+</script>
+<!--<style type="text/css">
+.black_overlay
+		{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color:Black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.70;
+			filter: alpha(opacity=70);
+		}
+.white_content 
+		{
+			display: none;
+			position: fixed;
+			top: 200px;
+			left: 300px;
+			width: 300px;
+			height: 80px;
+			padding: 16px;
+			border: 6px solid #083579;
+			background-color: white;
+			z-index:1002;
+			overflow: auto;
+		}
+</style>-->
+<style type="text/css">
+.checkout_main{width:920px; height:auto; border:8px solid #e8fdff; overflow:hidden; margin:0px 0px 0px -10px;}
+#cart_main{background-color:#fff; width:920px; margin:10px auto;}
+.cart_middle{width:899px; margin:10px auto; }
+*:focus {outline:none;}
+.shop_cart_bg{background:url(../images/shopping/inshop_bg.gif) repeat-x top; height:auto; width:897px; border:1px solid #f8b97a; overflow:hidden;line-height:39px; marginh:0px; padding:0px; position:relative;}
+
+
+.shop_cart_bg h2{font:bold 16px/39px Trebuchet MS; height:39px; color:#000; text-align:left; text-indent:10px; width:890px; cursor:pointer}
+.shop_cart_bg h2 a{font:bold 16px/39px Trebuchet MS; color:#000; text-decoration:none; float:left; display:inline;}
+.shop_cart_bg h2 a:hover{font:bold 16px/39px Trebuchet MS; color:#000; text-decoration:none;}
+
+.shop_cart_bg h2 img{float:right; margin:3px 0px 0px 0px; text-align:right;}
+
+
+.new_cart_main{height:43px; width:570px; margin:0px; padding:0px; text-align:left;}
+.new_cart_mainarea{height:85px; width:570px; margin:0px; padding:0px;}
+.new_thanq_blockleft{width:650px; float:left; margin:0px 0px 0px 20px;}
+
+.new_thanq_blockleft p{
+font:bold 30px arial;
+color:#632121;
+margin:0px;
+padding:0px;
+text-align:left;}
+
+.new_thanq_blockleft p.thanks{
+font:bold 20px arial;
+color:#000;
+margin:0px;
+padding:0px;
+}
+.new_thanq_blockleft .content{
+width:630px;
+line-height:20px;
+height:auto;
+text-align:left;
+float:left;
+}
+.new_cart_main input checkbox{ background:none;}
+
+.new_thanq_blockright{width:180px; float:right;}
+
+.new_cart_main p.error{color:#ff0000; font-size:11px; padding:0px; margin:-5px 0px 0px 0px;}
+
+.new_cart_mainarea p.error{color:#ff0000; font-size:11px; padding:0px; margin:-5px 0px 0px 0px; }
+
+
+.name_cart{ width:180px; height:25px; line-height:25px; float:left; margin:0px 0px 0px 0px; padding:0px; font:14px/25px Arial, Helvetica, sans-serif; text-align:left;}
+
+.name_cart_input{ float:left; width:350px; height:43px; font:13px/25px Arial; margin:0px 0px 0px 0px; padding:0px; text-align:left;}
+
+.name_cart_input p{ margin:0px; padding:1px 0px 0px 0px; font:11px Arial; color:#b15a02;}
+
+
+.name_cart_input input,textarea,select{ width:350px; background:#faf8f3; border:1px solid #ecc78c; display:inline; height:25px; margin:0px 0px 0px 0px;  padding:0px;  font:14px/25px Arial, Helvetica, sans-serif;}
+
+.name_cart_input select{ width:150px; background:#faf8f3; border:1px solid #ecc78c; display:inline; height:25px; margin:0px 0px 0px 0px;  padding:0px;  font:14px/27px Arial, Helvetica, sans-serif;}
+
+.name_cart_input input.next{ width:68px; height:26px; float:right; margin:0px;}
+
+
+.name_cart_input textarea{height:67px;}
+.cart_headding{
+font:bold 25px Trebuchet MS;
+color:#682628;
+margin:0px auto;
+text-align:left;
+text-indent:20px;
+}
+.cart_headding1{
+font:bold 13px Arial, Helvetica, sans-serif;
+color:#000000;
+margin:0px auto;
+text-align:left;
+width:280px;
+float:right;
+}
+.cart_headding2{font:12px Arial, Helvetica, sans-serif; text-align:left; float:rigt; width:260px;}
+.shop_textsamp{
+width:250px; height:auto; text-indent:0px;  /*background:url(../images/shopping/des_dot.gif) repeat-x bottom;*/ padding:0px 0px 20px 0px;
+}
+.shop_textsamp ul{
+margin:0px; padding:0px; list-style-type:none;
+}
+.shop_textsamp li{
+margin:0px; padding:0px 0px 0px 15px; width:230px; height:auto; background:url(../images/shopping/shop_smll_arrow.jpg) no-repeat left center; text-align:left; font:12px Arial, Helvetica, sans-serif; line-height:18px;}
+.shop_textsamp li a{ font:12px Arial, Helvetica, sans-serif; color:#000; text-decoration:none;}
+.table_structure{
+	width:900px;
+	height:auto;
+	margin:0px auto;
+	padding:0px;
+	color:#cc6600;
+	font:bold 13px arial;
+	overflow:hidden;
+	background:#fdf5d9;
+
+	}
+.table_structure ul li{
+	display:inline;
+	float:left;
+	height:34px;
+	text-align:center;border-right:1px solid #fff;
+	line-height:34px;
+}
+.table_structure ul li.date{
+	width:320px;
+	border-right:0px;
+}
+.table_structure ul li.time{
+	width:180px;
+	border-right:0px;
+}
+.table_structure ul li.qty{
+	width:130px;
+}
+.table_structure ul li.varient{
+	width:200px;
+}
+.table_structure ul li.home{
+	width:132px;
+}
+.table_structure ul li.away{
+	width:133px;
+}
+.table_structure ul li.lineup{
+	width:35px;
+}
+
+.table_structure ul li.lineup img{
+position:relative;
+top:0px;
+#top:3px;
+}
+
+body:nth-of-type(1) .table_structure ul li.lineup img{
+position:relative;
+top:8px;
+}
+
+
+
+/*.table_structure ul li.lineup .img{
+position:relative;
+height:20px;
+top:0px;
+}
+*/
+
+.table_structure_color{
+	background:#f2f2f2;
+	border-bottom:1px solid #fff;
+	height:34px;
+	color:#000;
+	font-weight:normal;
+	margin:0px auto;
+}
+.top_form_block{ text-align:left; margin:0px auto;}
+.top_form_block p{ text-indent:10px; font:bold 25px Trebuchet MS; padding:5px 0px;}
+.top_form_block p a{ text-indent:-10px; color:#f57808; font-size:13px; text-decoration:underline; padding:0px 10px 0px 0px;}
+
+.table_structure select{ width:150px;}
+
+.cartback_button{ margin:0px 0px 0px 10px;}
+
+.grand{color: #6d1815;}
+
+
+.black_overlay_new{
+			display: none;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 70em;
+			background-color: black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+		}
+		.white_content {
+			display: none;
+			position: absolute;
+			top:10%;
+			left: 50%;
+			margin-left:-425px;
+			width: 850px;
+			height: auto;
+			padding:0px;
+			-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+			border: 12px solid #d15b10;
+			background-color: white;
+			z-index:1002;
+			
+		}
+		
+		.white_content_new {
+			display: none;
+			position: absolute;
+			top:10%;
+			left: 50%;
+			margin-left:-425px;
+			width: 558px;
+			height: 500px;
+			padding:0px;
+			-moz-border-radius: 12px;
+	        -webkit-border-radius: 12px;
+			border: 12px solid #d15b10;
+			background-color: white;
+			z-index:1002;
+			
+		}
+		
+.gift_heading_text{float:left; margin-left:15px;}
+.gift_heading_text img{margin:10px 0px 0px 150px;}
+	
+		
+
+.pop_main_leftinner{ width:385px; overflow:hidden; margin:0px auto; text-align:left; font:bold 15px Trebuchet MS; color:#333333}
+.pop_main_leftinner h2{font:28px Trebuchet MS; color:#006cb0; text-align:left; margin:0px; padding:0px;}
+
+.pop_main_leftinner input{width:280px; height:26px; border:1px solid #ffc13e;  font-size:16px;}
+
+
+.pop_main_leftinner p.error{color:#ff0000; font:11px Arial, Helvetica, sans-serif; text-align:left; margin:0px; padding:0px;}
+
+.pop_main_left{width:370px; height:auto; margin:10px 0px 0px 20px; padding:0px; float:left; }
+.pop_main_right{width:430px; margin:10px 0px 8px 0px; padding:0px; float:right;  border-left:3px solid #f3d387; font:13px Arial, Helvetica, sans-serif; color:#333;}
+.pop_main_style{width:850px; height:auto; margin:20px auto; padding:0px; position:relative;}
+
+.pop_main_style .or_img{position:absolute; top:193px; left:387px; z-index:1000;}
+
+
+.login_main_leftinner{ width:365px; overflow:hidden; margin:0px auto; text-align:left; font:bold 15px Trebuchet MS; color:#333333}
+.login_main_leftinner h2{font:28px Trebuchet MS; color:#006cb0; text-align:left; margin:0px; padding:0px;}
+.login_main_leftinner input{width:180px; height:26px; border:1px solid #ffc13e;  font-size:16px;}
+.login_main_leftinner p.error{color:#ff0000; font:11px Arial, Helvetica, sans-serif; text-align:left; margin:0px; padding:0px;}
+.login_single_block{height:63px;}
+.login_single_block .input_new{_wi/dth:331px;}
+.login_single_block .input_new{width:351px;}
+
+.password_block{width:200px; float:left;}
+.password_blockright{width:155px; font:13px Arial, Helvetica, sans-serif; color:#0050b4; text-decoration:underline; line-height:60px; float:left;}
+.password_blockright a{ text-decoration:none;}
+
+.login_main_line{background:#f3d387; width:390px; margin:10px 0px 10px 0px; height:3px;}
+.login_main_orimg{position:relative; top:130px; z-index:1000;background:#fff; width:28px; height:40px; margin:0px; padding:0px;}
+.flo_left{float:left;}
+.loginor_text{ font:13px/20px Arial, Helvetica, sans-serif; color:#333; padding:0px 20px 0px 20px; float:left}
+.loginor_textlink{ font:13px/20px Arial, Helvetica, sans-serif; color:#0050b4; text-decoration:underline; float:left;}
+.login_main_leftinner input.login_main_button{width:80px; height:26px; border:0px;}
+.pop_main_right input.sign_main_button{width:104px; height:26px; border:0px;}
+.step1_content{width:250px; height:auto; margin:0px; padding:0px;}
+				.step1_name{background:url(/images/shopping/shop_smll_arrow.jpg) no-repeat left; font:bold 13px Arial, Helvetica, sans-serif; font-style:italic; text-align:left; padding:0px 0px 0px 15px;}
+				.step1_dec{width:235px; float:right; text-align:left; font-weight:normal; font:11px Arial, Helvetica, sans-serif; color:#606060;}
+				.step1_clear{height:10px; clear:both}
+
+p a 
+{
+
+text-decoration: none;
+
+color: #6e1713;
+
+font-family: Arial,Helvetica,sans-serif;
+
+}
+
+
+</style>

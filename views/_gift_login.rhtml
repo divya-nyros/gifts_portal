@@ -1,0 +1,142 @@
+<div style="width:580px; height:auto;  float:left; margin:20px 0px 20px 0px; clear:both; background:url(/images/shopping/dot_shoping.jpg) repeat-y right;" id="mylogin">
+				
+					<div class="new_cart_main">
+						<div class="name_cart">Your Name</div>
+						<div class="name_cart_input"><input type="text" id="from_name" , value="<% if !@user.blank? %><%= @user.name %><% end %>" name="orderfrom_name" >
+					
+						</div>
+					</div>
+				
+						<div class="new_cart_main">
+						<div class="name_cart">Email</div>
+						<div class="name_cart_input"><input type="text" id="from_email" , value="<% if !@user.blank? %><%= @user.email %><% end %>"  name="orderfrom_email">
+						
+						</div>
+						
+					</div>
+		
+					<div class="new_cart_main">
+						<div class="name_cart">Phone</div>
+						<div class="name_cart_input"><input type="text" id="phone_no"  name="from_phone"  value="<% if !@user.blank? %><%= @user.mobile_number  %><% end %>" onkeyup="return keyPhone(this.value);"><p>(Enter Country Code)</p>
+						
+						</div>
+						
+					</div>
+					
+					<!--<div class="new_cart_main">
+						<div class="name_cart">Zip Code</div>
+						<div class="name_cart_input"><input type="text" id="zipcode"  name="from_zipcode" value="<%#= @user.zipcode  %>" >
+						
+						</div>
+					</div>-->
+					
+					
+					<div class="new_cart_mainarea">
+						<div class="name_cart">Address</div>
+						<div class="name_cart_input"><textarea id="street_address" name="from_street" ><% if !@user.blank? %><%= @user.address%><% end %></textarea>
+						
+						</div>
+					</div>
+					<div class="new_cart_main">
+						<div class="name_cart">Zip Code</div>
+						<div class="name_cart_input"><input type="text" id="zipcode"  name="from_zipcode" value="<% if !@user.blank? %><%= @user.zipcode  %><% end %>" >
+						
+						</div>
+					</div>
+					
+				
+					<div class="new_cart_main">
+						<div class="name_cart">City</div>
+						<div class="name_cart_input"><input type="text" id="city"  name="from_city" value="<% if !@user.blank? %><%= @user.city  %><% end %>" >
+						
+						</div>
+					</div>
+					
+					
+					
+					
+					<div class="new_cart_main">
+						<div class="name_cart">State</div>
+						<div class="name_cart_input"><input type="text" id="state"  name="from_state" value="<% if !@user.blank? %><%= @user.state  %><% end %>" >
+						
+						</div>
+					</div>
+					
+						
+					
+					
+					<div class="new_cart_main">
+						<div class="name_cart">Country</div>
+						<div class="name_cart_input">
+						<%#=  @user.country %>
+						<% if @user %>
+						<% if !@user.country.blank? %>
+					 <%= country_select("from_country", "country", @user.country,{},:style => 'width:350px;',:name => "mycountry") %>
+						<% else %>
+	               <%= country_select("from_country", "country", nil,{:include_blank => "Select Country"},:style => 'width:350px;',:name => "mycountry") %>
+					<% end %>	
+					
+					<% else %>
+	               <%= country_select("from_country", "country", nil,{:include_blank => "Select Country"},:style => 'width:350px;',:name => "mycountry") %>
+					<% end %>	
+					
+						</div>
+					</div>
+					
+					
+					
+					
+					<!--<div class="new_cart_main">
+						<div class="name_cart">Your Date of Birth <span><a href="javascript:void(0)" onmousemove="showtip(event, 'We keep your date of birth private and will use it for potential purpose. Thanks for sharing.');"onmouseout="hidetip();" >[?]</a></span></div>
+						<div class="name_cart_input">
+						<%# if !@user.date_of_birth.blank? %>
+						<%#= calendar_date_select_tag "delivery[date]",nil, :year_range => 65.years.ago..18.years.ago,:style => "width:200px; height:23px; font-size:14px;",:id=>"date_dob", :popup => 'force', :value=> "#{@user.date_of_birth.strftime('%m/%d/%Y')} "  %>
+						
+						<%# else %>
+							<%#= calendar_date_select_tag "delivery[date]",nil, :year_range => 65.years.ago..18.years.ago,:style => "width:200px; height:23px; font-size:14px;",:id=>"date_dob", :popup => 'force'  %>
+						<%# end %>
+						
+						</div>
+					</div>-->
+					
+					
+					<!--<div style="width:390px; margin:0px auto; font:13px Arial, Helvetica, sans-serif; float:right;">
+					
+						<div style="float:left;"><div class="flo_left">Do you want to save this address</div>
+					<div class="flo_left" style="margin:1px 0px 0px 0px;"><input name="status[inform]" type="checkbox" style="height:15px; width:20px;" id="status_inform" /></div></div>
+					
+					<div style="float:left; margin:0px 0px 0px 10px;"><div class="flo_left">Reset</div>
+					<div class="flo_left" style="margin:1px 0px 0px 0px;"><input name="status1" type="checkbox" style="height:15px; width:20px;" onclick="return myresetfun();" /></div></div>
+					
+					</div>-->
+					
+					
+					
+					
+					
+					
+					<div class="clear">&nbsp;</div>
+					
+					
+				<script type="text/javascript">
+function myresetfun()
+{
+	
+	document.getElementById('phone_no').value = '';
+	document.getElementById('zipcode').value = '';
+	document.getElementById('street_address').value = '';
+	document.getElementById('date_dob').value = '';
+}
+
+</script>	
+					
+					
+					
+					
+				<div class="new_cart_main">
+						<div class="name_cart">&nbsp;</div>
+												<div style="width:100px;float:right;"><input type="image" src="/images/shopping/cart_next.gif" id="next_form_my" style="margin:0px 0px 0px 0px;" onclick="return new_form();" class="next"/></div>
+						<div id="next_block_app" style=" color:#FF0000;float:right; display:none;">Please wait for step 2 to open</div>
+					</div>
+					
+					</div>
